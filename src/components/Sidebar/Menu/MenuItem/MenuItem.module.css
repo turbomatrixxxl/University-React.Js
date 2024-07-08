@@ -1,0 +1,28 @@
+.menuItem {
+  align-items: center;
+  color: #010101;
+  cursor: pointer;
+  display: flex;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  gap: 24px;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+.menuItem:hover,
+.menuItem:focus {
+  color: #ff6b0a;
+}
+
+.menuItemActive {
+  color: #ff6b0a;
+}
+
+.menuItem svg {
+  color: #ff6b0a;
+}

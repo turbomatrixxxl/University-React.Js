@@ -1,0 +1,14 @@
+.menuContainer {
+  padding: 0 24px;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 24px;
+  height: 24px;
+  justify-content: center;
+  padding: 0;
+  width: 224px;
+}

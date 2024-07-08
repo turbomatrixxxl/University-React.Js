@@ -1,0 +1,39 @@
+.sidebar {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 24px;
+  height: 100vh;
+  position: relative;
+  width: 320px;
+}
+
+.sidebarHeader {
+  background: #161d2a;
+  flex-shrink: 0;
+  height: 80px;
+  width: 100%;
+}
+
+.button {
+  align-items: center;
+  background-color: #ff6b0a;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  height: 32px;
+  padding: 8px;
+  position: absolute;
+  right: -16px;
+  top: 96px;
+  width: 32px;
+}
+
+.button svg {
+  width: 16px;
+  height: 16px;
+}
