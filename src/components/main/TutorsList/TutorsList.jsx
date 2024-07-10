@@ -16,11 +16,11 @@ class TutorsList extends React.Component {
   state = {
     isFormVisible: false,
     NewTutor: {
-      Surname: '',
-      Name: '',
-      Phone: '',
-      Email: '',
-      City: '',
+      surname: '',
+      name: '',
+      phone: '',
+      email: '',
+      city: '',
     },
   };
 
@@ -68,25 +68,25 @@ class TutorsList extends React.Component {
               <Input
                 type={'text'}
                 // value={this.state.NewTutor.Surname}
-                label={'Surname*'}
+                label={'Surname'}
                 handleChange={this.handleChange}
               />
               <Input
                 type={'text'}
                 // value={this.state.NewTutor}
-                label={'Name*'}
+                label={'Name'}
                 // handleChange={this.handleChange}
               />
               <Input
                 type={'number'}
                 // value={this.state.NewTutor}
-                label={'Phone number*'}
+                label={'Phone number'}
 
                 // handleChange={this.handleChange}
               />
               <Input
                 type={'email'}
-                label={'Email*'}
+                label={'Email'}
                 // value={this.state.NewTutor}
 
                 // handleChange={this.handleChange}
@@ -94,7 +94,7 @@ class TutorsList extends React.Component {
               <Input
                 type={'text'}
                 // value={this.state.NewTutor}
-                label={'City*'}
+                label={'City'}
                 // handleChange={this.handleChange}
               />
               <Button variant={'icon'}>invite</Button>

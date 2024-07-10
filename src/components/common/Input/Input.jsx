@@ -13,7 +13,8 @@ export default function Input({ label, name, type, value, handleChange }) {
         required
       />
       <label htmlFor={name} className={styles.inputLabel}>
-        <span>{label}</span>
+        {label}
+        <span className={styles.requiredIcon}>*</span>
       </label>
     </div>
   );

@@ -6,9 +6,8 @@
 }
 
 .input {
-  outline: 1px solid #757575;
   border: 1px solid #757575;
-  color: #303030;
+  color: #010101;
   display: block;
   font-family: Montserrat;
   font-size: 18px;
@@ -37,8 +36,9 @@
 }
 
 .input:focus {
-  border: none;
+  border: 1px solid #424242;
   outline: none;
+  padding: 12px 24px;
 }
 
 .input:focus ~ label,
@@ -47,4 +47,14 @@
   font-size: 12px;
   left: 0;
   top: -20px;
+}
+
+.requiredIcon {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: #e53935;
+  /* margin-left: -4px; */
 }
