@@ -32,10 +32,11 @@ class TutorsList extends React.Component {
 
   handleChange = ev => {
     console.log(ev.target.value);
+    const firstName = ev.target.value;
     this.setState({
       ...this.state,
       ...this.NewTutor,
-      Surname: ev.target.value,
+      Surname: { firstName },
     });
     console.log(this.state);
   };
