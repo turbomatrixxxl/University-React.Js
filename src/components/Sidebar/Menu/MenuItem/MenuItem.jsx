@@ -4,14 +4,16 @@ import clsx from 'clsx';
 
 import styles from './MenuItem.module.css';
 
-function MenuItem({ item, isActive }) {
+function MenuItem({ item, isActive, isVisible }) {
   // console.log(item);
   const nameClass = clsx(styles.menuItem, isActive && styles.menuItemActive);
 
   return (
-    <li className={nameClass}>
-      {item.icon} {item.name}
-    </li>
+    isVisible && (
+      <li className={nameClass}>
+        {item.icon} {item.name}
+      </li>
+    )
   );
 }
 

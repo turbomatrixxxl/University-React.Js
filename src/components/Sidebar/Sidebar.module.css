@@ -4,9 +4,13 @@
   flex-direction: column;
   flex-shrink: 0;
   gap: 24px;
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
   width: 320px;
+}
+
+.hide {
+  width: 0;
 }
 
 .sidebarHeader {
@@ -14,6 +18,7 @@
   flex-shrink: 0;
   height: 80px;
   width: 100%;
+  margin-bottom: 24px;
 }
 
 .button {

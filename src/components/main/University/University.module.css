@@ -1,11 +1,12 @@
 .papers {
+  align-items: center;
   background: #fff;
   /* Shadow1 */
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  gap: 16px;
+  gap: 8px;
   height: 228px;
   padding: 32px;
   width: 144px;
@@ -15,16 +16,17 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  /* gap: 6px; */
+  gap: 6px;
   flex-grow: 1;
   justify-content: space-between;
+  width: 100%;
 }
 
 .image {
   border-radius: 50%;
   flex-shrink: 0;
-  height: 80px;
-  width: 80px;
+  height: fit-content;
+  width: 100%;
 }
 
 .name {
@@ -52,6 +54,7 @@
 .iconsContainer {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .editButtons {

@@ -1,0 +1,28 @@
+.button {
+  align-items: center;
+  background: #ff6b0a;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 8px 16px;
+  width: fit-content;
+}
+
+.primary {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.danger {
+  background: green;
+  color: white;
+}

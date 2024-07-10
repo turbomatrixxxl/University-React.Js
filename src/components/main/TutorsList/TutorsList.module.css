@@ -1,0 +1,114 @@
+.list {
+  align-items: flex-start;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 24px;
+  height: fit-content;
+  padding: 24px;
+  /* width: 100%; */
+}
+
+.listItem {
+  display: flex;
+  gap: 24px;
+}
+
+.listItemName {
+  color: #010101;
+  /* height: 72px; */
+  flex-shrink: 0;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+  width: 172px;
+}
+
+.listItemDetailsCont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listItemDetailCont {
+  align-items: center;
+  display: flex;
+  gap: 3px;
+}
+
+.listItemDetailIcon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.listItemDetail {
+  color: #010101;
+  flex-shrink: 0;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  /* height: 72px; */
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+  width: 243px;
+}
+
+.listItemDescription {
+  color: #010101;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.plus {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #ff6b0a;
+  display: flex;
+  font-weight: 900;
+  height: 16px;
+  justify-content: center;
+  width: 16px;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.formsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.formHeading {
+  /* display: flex; */
+  /* width: 488px; */
+  /* height: 24px; */
+  /* flex-direction: column;
+justify-content: center;
+flex-shrink: 0; */
+
+  color: #424242;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+}
