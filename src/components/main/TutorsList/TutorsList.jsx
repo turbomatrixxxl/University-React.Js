@@ -97,11 +97,13 @@ class TutorsList extends React.Component {
                 label={'City'}
                 // handleChange={this.handleChange}
               />
-              <Button variant={'icon'}>invite</Button>
+              <Button type="submit" variant={'icon'}>
+                invite
+              </Button>
             </form>
           </section>
         )}
-        <Button variant={'icon'} handleClick={this.toggleForm}>
+        <Button type="button" variant={'icon'} handleClick={this.toggleForm}>
           <span className={styles.plus}>
             <HiPlus />
           </span>{' '}

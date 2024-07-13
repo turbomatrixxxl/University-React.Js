@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 
 import styles from './Button.module.css';
 
-function Button({ variant = '', customStyles, handleClick, children }) {
+function Button({
+  variant = '',
+  type = '',
+  customStyles,
+  handleClick,
+  children,
+}) {
   //   const getButtonClass = () => {
   //     if (variant === 'icon') {
   //       return `${styles.button} ${styles.primary}`;
@@ -41,6 +47,7 @@ function Button({ variant = '', customStyles, handleClick, children }) {
         ),
         customStyles
       )}
+      type={type}
     >
       {children}
     </button>
