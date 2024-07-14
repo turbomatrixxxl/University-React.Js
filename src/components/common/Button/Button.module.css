@@ -3,15 +3,41 @@
   background: #ff6b0a;
   border: none;
   cursor: pointer;
+  color: #fff;
   display: inline-flex;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
   gap: 10px;
   justify-content: center;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
   padding: 8px 16px;
+  text-align: center;
+  text-transform: uppercase;
   width: fit-content;
 }
 
 .primary {
-  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
+  padding: 6px 16px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.secondary {
+  background: #bdbdbd;
+  padding: 6px 16px;
+}
+
+.notActive {
+  background-color: #ffe0b2;
   font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
@@ -22,7 +48,6 @@
   text-transform: uppercase;
 }
 
-.danger {
-  background: green;
-  color: white;
+.notActive:valid {
+  background-color: #ff6b0a;
 }

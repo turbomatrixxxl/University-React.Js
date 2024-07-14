@@ -5,6 +5,7 @@ import { HiDeviceMobile, HiLocationMarker, HiMail } from 'react-icons/hi';
 import styles from '../TutorsList.module.css';
 
 function TutorItem({
+  id,
   phone,
   firstName,
   lastName,
@@ -14,7 +15,7 @@ function TutorItem({
   isVisible,
 }) {
   return (
-    <li className={styles.listItem} key={phone}>
+    <li className={styles.listItem} key={id}>
       <div className={styles.listItemName}>{`${firstName} ${lastName}`}</div>
       <div className={styles.listItemDetailsCont}>
         <div className={styles.listItemDetailCont}>
@@ -50,7 +51,7 @@ TutorItem.propTypes = {
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  options: PropTypes.string.isRequired,
+  options: PropTypes.string,
 };
 
 export default TutorItem;

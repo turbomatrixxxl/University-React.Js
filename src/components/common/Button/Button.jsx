@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
 function Button({
+  disabled,
   variant = '',
   type = '',
   customStyles,
@@ -39,14 +40,17 @@ function Button({
       onClick={handleClick}
       className={clsx(
         clsx(
-          variant === 'icon'
+          variant === 'primary'
             ? clsx(styles.button, styles.primary)
-            : variant === 'danger'
-            ? clsx(styles.button, styles.danger)
+            : variant === 'secondary'
+            ? clsx(styles.button, styles.secondary)
+            : variant === 'notActive'
+            ? clsx(styles.button, styles.notActive)
             : styles.button
         ),
         customStyles
       )}
+      disabled={disabled}
       type={type}
     >
       {children}
