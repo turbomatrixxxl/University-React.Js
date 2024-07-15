@@ -156,7 +156,7 @@ class TutorsList extends React.Component {
                 required={true}
               />
               <Input
-                type={'number'}
+                type={'tel'}
                 label={'Phone number'}
                 value={phone}
                 name="phone"
