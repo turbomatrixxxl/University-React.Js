@@ -1,0 +1,19 @@
+.modalClassName::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modalClassName {
+  left: 0;
+  /* top: 40%; */
+  background-color: white;
+  border: solid;
+  color: black;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}

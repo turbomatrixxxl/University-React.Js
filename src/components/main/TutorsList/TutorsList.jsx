@@ -6,7 +6,7 @@ import Button from 'components/common/Button';
 
 import styles from './TutorsList.module.css';
 import { HiPlus } from 'react-icons/hi';
-import data from '../../../utils/data.json';
+// import data from '../../../utils/data.json';
 
 const INITIAL_FORM_VALUE = {
   firstName: '',
@@ -19,7 +19,7 @@ const INITIAL_FORM_VALUE = {
 
 const INITIAL_STATE = {
   searchTherm: '',
-  tutors: data.tutors,
+  tutors: [],
   isFormVisible: false,
   disabled: true,
   newTutor: { ...INITIAL_FORM_VALUE },
@@ -29,6 +29,18 @@ class TutorsList extends React.Component {
   //   tutors: '',
   // };
   // !!! nu e nevoie de props !!!
+
+  componentDidMount() {
+    const dataLocStorageTutors = JSON.parse(localStorage.getItem('tutors'));
+    // console.log(tutors);
+
+    this.setState({ tutors: dataLocStorageTutors });
+    // console.log(this.state);
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('tutors', JSON.stringify(this.state.tutors));
+  }
 
   state = {
     ...INITIAL_STATE,
@@ -46,7 +58,11 @@ class TutorsList extends React.Component {
     const { name, value } = ev.target;
     this.setState({
       ...this.state,
-      newTutor: { ...this.state.newTutor, [name]: value },
+      newTutor: {
+        ...this.state.newTutor,
+        [name]: value,
+        id: this.state.tutors.length + 1,
+      },
     });
 
     // console.log(this.state);

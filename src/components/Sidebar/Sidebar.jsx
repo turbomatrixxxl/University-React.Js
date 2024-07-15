@@ -36,6 +36,15 @@ class Sidebar extends Component {
     },
   ];
 
+  componentDidMount() {
+    setTimeout(() => console.log('Am inceput numaratoarea', 1000), 1000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout();
+    console.log('Am oprit numaratoarea');
+  }
+
   handleClick() {
     // console.log(this.state.isVisible);
 
