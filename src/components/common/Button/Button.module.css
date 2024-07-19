@@ -36,6 +36,16 @@
   padding: 6px 16px;
 }
 
+.icon {
+  background-color: white;
+  border: none;
+  color: #757575;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
 .notActive {
   background-color: #ffe0b2;
   font-family: Montserrat;

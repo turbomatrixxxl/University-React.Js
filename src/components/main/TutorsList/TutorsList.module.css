@@ -30,8 +30,9 @@
 }
 
 .listItem {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
 }
 
 .listItemName {
@@ -130,4 +131,15 @@ flex-shrink: 0; */
   font-weight: 700;
   line-height: 1.5; /* 150% */
   letter-spacing: 0.5px;
+}
+
+.buttonTrashlIconContainer {
+  /* align-items: center; */
+  display: flex;
+  justify-content: center;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
 }

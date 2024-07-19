@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import TutorItem from './Tutor/TutorItem';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import axios from 'axios';
+import Loading from 'components/common/Loading';
+import Alert from 'components/common/Alert';
+import { HiPlus } from 'react-icons/hi';
 
 import styles from './TutorsList.module.css';
-import { HiPlus } from 'react-icons/hi';
 // import data from '../../../utils/data.json';
+
+axios.defaults.baseURL = 'http://localhost:3001';
 
 const INITIAL_FORM_VALUE = {
   firstName: '',
@@ -14,14 +19,15 @@ const INITIAL_FORM_VALUE = {
   phone: '',
   email: '',
   city: '',
-  id: '',
 };
 
 const INITIAL_STATE = {
   searchTherm: '',
   tutors: [],
   isFormVisible: false,
+  loading: false,
   disabled: true,
+  error: null,
   newTutor: { ...INITIAL_FORM_VALUE },
 };
 class TutorsList extends React.Component {
@@ -30,21 +36,41 @@ class TutorsList extends React.Component {
   // };
   // !!! nu e nevoie de props !!!
 
-  componentDidMount() {
-    const dataLocStorageTutors = JSON.parse(localStorage.getItem('tutors'));
-    // console.log(tutors);
-
-    this.setState({ tutors: dataLocStorageTutors });
-    // console.log(this.state);
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem('tutors', JSON.stringify(this.state.tutors));
-  }
-
   state = {
     ...INITIAL_STATE,
   };
+
+  async componentDidMount() {
+    try {
+      this.setState({ loading: true });
+      const response = await axios.get('/tutors');
+      // console.log(response.data);
+
+      const tutorsFromServer = response.data;
+
+      this.setState({
+        tutors: tutorsFromServer,
+        error: null,
+      });
+    } catch (error) {
+      console.log(error.message);
+
+      this.setState({
+        error: 'Lista de tutori nu a fost gasita !',
+      });
+    } finally {
+      this.setState({ loading: false });
+    }
+
+    // const dataLocStorageTutors = JSON.parse(localStorage.getItem('tutors'));
+    // console.log(tutors);
+
+    // console.log(this.state);
+  }
+
+  // componentDidUpdate() {
+  //   localStorage.setItem('tutors', JSON.stringify(this.state.tutors));
+  // }
 
   toggleForm = () => {
     this.setState({
@@ -61,7 +87,6 @@ class TutorsList extends React.Component {
       newTutor: {
         ...this.state.newTutor,
         [name]: value,
-        id: this.state.tutors.length + 1,
       },
     });
 
@@ -70,25 +95,73 @@ class TutorsList extends React.Component {
 
   handleInviteButtonChange = ev => {
     const { name, value } = ev.target;
+    if (value.length === 0) {
+      this.setState({ disabled: true });
+      return;
+    }
     this.setState({
       ...this.state,
       newTutor: { ...this.state.newTutor, [name]: value },
+
       disabled: false,
     });
   };
 
+  async addTutor(ev) {
+    const isExist = this.state.tutors.filter(tutor => {
+      const name = this.state.newTutor.lastName.includes(tutor.lastName);
+      const surname = this.state.newTutor.firstName.includes(tutor.firstName);
+
+      return name && surname;
+    });
+
+    try {
+      if (isExist.length > 0) {
+        alert('This name is already in the list !');
+
+        this.setState({ ...this.state, disabled: true });
+
+        ev.target.reset();
+        return;
+      }
+
+      // console.log(isExist);
+
+      const response = await axios.post('/tutors', this.state.newTutor);
+      // console.log(response.data);
+
+      this.setState({
+        ...this.state,
+        tutors: [...this.state.tutors, response.data],
+        newTutor: { INITIAL_FORM_VALUE },
+        disabled: true,
+      });
+    } catch (error) {
+      this.setState({ error: 'Tutorul nu a putut fi adaugat' });
+    }
+  }
+
   handleSubmit = ev => {
     ev.preventDefault();
-    this.setState({
-      ...this.state,
-      tutors: [...this.state.tutors, this.state.newTutor],
-      newTutor: { INITIAL_FORM_VALUE },
-      disabled: true,
-    });
+
+    this.addTutor(ev);
 
     const form = ev.target;
     form.reset();
   };
+
+  async deleteTutor(id) {
+    try {
+      await axios.delete(`tutors/${id}`);
+      const tutorsLeft = this.state.tutors.filter(tutor => tutor.id !== id);
+      this.setState({
+        ...this.state,
+        tutors: [...tutorsLeft],
+      });
+    } catch (error) {
+      this.setState({ ...this.state, error: 'Tutorul nu a putut fi sters !' });
+    }
+  }
 
   getTutorsCount = () => {
     return this.state.tutors.length;
@@ -104,18 +177,21 @@ class TutorsList extends React.Component {
 
   render() {
     const { name, surname, phone, email, city } = this.state.newTutor;
+    const { loading, error, disabled, tutors, searchTherm } = this.state;
+    // console.log(tutors);
 
-    const getTutorsBySearchTherm = this.state.tutors.filter(tutor => {
-      const searchTherm = this.state.searchTherm;
+    const getTutorsBySearchTherm = tutors.filter(tutor => {
+      // const searchTherm = this.state.searchTherm;
       const name = tutor.lastName;
       const surName = tutor.firstName;
       const isFound =
         name.toLowerCase().includes(searchTherm.toLowerCase()) ||
         surName.toLowerCase().includes(searchTherm.toLowerCase());
+      // console.log(isFound);
+
       return isFound;
     });
 
-    const disabled = this.state.disabled;
     return (
       <div className={styles.listContainer}>
         <p>Search for Tutor:</p>
@@ -124,24 +200,28 @@ class TutorsList extends React.Component {
           className={styles.searchThermInput}
           type="text"
           name="searchTherm"
-          value={this.state.searchTherm}
+          value={searchTherm}
         />
 
-        <ul className={styles.list}>
-          {getTutorsBySearchTherm.map(tutor => {
-            return (
-              <TutorItem
-                key={tutor.id}
-                phone={tutor.phone}
-                firstName={tutor.firstName}
-                lastName={tutor.lastName}
-                email={tutor.email}
-                city={tutor.city}
-                options={tutor.options}
-              />
-            );
-          })}
-        </ul>
+        <div>
+          <ul className={styles.list}>
+            {loading && <Loading />}
+
+            {error && <Alert message={error} />}
+
+            {getTutorsBySearchTherm.map(tutor => {
+              return (
+                <TutorItem
+                  key={tutor.id}
+                  item={tutor}
+                  handleDelete={() => {
+                    this.deleteTutor(tutor.id);
+                  }}
+                />
+              );
+            })}
+          </ul>
+        </div>
 
         <p>Number of Tutors found {getTutorsBySearchTherm.length}</p>
 

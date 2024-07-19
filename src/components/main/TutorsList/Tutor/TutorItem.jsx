@@ -3,55 +3,55 @@ import PropTypes from 'prop-types';
 import { HiDeviceMobile, HiLocationMarker, HiMail } from 'react-icons/hi';
 
 import styles from '../TutorsList.module.css';
+import { HiTrash } from 'react-icons/hi2';
+import Button from 'components/common/Button';
 
-function TutorItem({
-  id,
-  phone,
-  firstName,
-  lastName,
-  email,
-  city,
-  options,
-  isVisible,
-}) {
+function TutorItem({ item, handleDelete }) {
   return (
-    <li className={styles.listItem} key={id}>
-      <div className={styles.listItemName}>{`${firstName} ${lastName}`}</div>
+    <li className={styles.listItem} key={item.id}>
+      <div
+        className={styles.listItemName}
+      >{`${item.firstName} ${item.lastName}`}</div>
       <div className={styles.listItemDetailsCont}>
         <div className={styles.listItemDetailCont}>
           <span className={styles.listItemDetailIcon}>
             <HiDeviceMobile />
           </span>
-          <span className={styles.listItemDetail}>{phone}</span>
+          <span className={styles.listItemDetail}>{item.phone}</span>
         </div>
         <div className={styles.listItemDetailCont}>
           <span className={styles.listItemDetailIcon}>
             <HiMail />
           </span>
-          <span className={styles.listItemDetail}>{email}</span>
+          <span className={styles.listItemDetail}>{item.email}</span>
         </div>
 
         <div className={styles.listItemDetailCont}>
           <span className={styles.listItemDetailIcon}>
             <HiLocationMarker />
           </span>
-          <span className={styles.listItemDetail}>{city}</span>
+          <span className={styles.listItemDetail}>{item.city}</span>
         </div>
       </div>
       <div className={styles.listItemDescription}>
-        {options ? options : null}
+        {item.options ? item.options : null}
       </div>
+      <span className={styles.buttonTrashlIconContainer}>
+        <Button
+          type="button"
+          disabled={false}
+          handleClick={handleDelete}
+          variant="icon"
+        >
+          <HiTrash className={styles.svg} />
+        </Button>
+      </span>
     </li>
   );
 }
 
 TutorItem.propTypes = {
-  phone: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  options: PropTypes.string,
+  item: PropTypes.object.isRequired,
 };
 
 export default TutorItem;

@@ -36,14 +36,14 @@ export class Modal extends Component {
   };
 
   handleKeyDown = event => {
-    console.log(event.key);
+    // console.log(event.key);
     if (event.key === 'Escape') {
       this.handleModalClose();
     }
   };
 
   handleClickOutside = event => {
-    console.log(event.target);
+    // console.log(event.target);
     if (
       this.modalContentRef.current &&
       !this.modalContentRef.current.contains(event.target)

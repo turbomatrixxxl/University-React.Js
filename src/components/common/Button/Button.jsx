@@ -46,6 +46,8 @@ function Button({
             ? clsx(styles.button, styles.secondary)
             : variant === 'notActive'
             ? clsx(styles.button, styles.notActive)
+            : variant === 'icon'
+            ? clsx(styles.icon)
             : styles.button
         ),
         customStyles
