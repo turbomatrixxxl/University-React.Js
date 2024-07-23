@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/University-React.Js/static/css/main.b4addd3b.css",
+    "main.css": "/University-React.Js/static/css/main.90b3c0f5.css",
     "main.js": "/University-React.Js/static/js/main.f5e26c58.js",
     "index.html": "/University-React.Js/index.html",
-    "main.b4addd3b.css.map": "/University-React.Js/static/css/main.b4addd3b.css.map",
+    "main.90b3c0f5.css.map": "/University-React.Js/static/css/main.90b3c0f5.css.map",
     "main.f5e26c58.js.map": "/University-React.Js/static/js/main.f5e26c58.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4addd3b.css",
+    "static/css/main.90b3c0f5.css",
     "static/js/main.f5e26c58.js"
   ]
 }
