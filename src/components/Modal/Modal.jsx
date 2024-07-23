@@ -1,75 +1,101 @@
-import React, { Component } from 'react';
-import { createRef } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { HiX } from 'react-icons/hi';
+import Input from 'components/common/Input';
+import Button from 'components/common/Button';
+
+import pencil from '../../images/school.png';
 
 import styles from './Modal.module.css';
 
-export class Modal extends Component {
-  modalRef = createRef();
-  modalContentRef = createRef();
-
-  componentDidMount() {
-    document.body.addEventListener('mousedown', this.handleClickOutside);
-    document.body.addEventListener('keydown', this.handleKeyDown);
+function Modal({ isModalVisible, handleModalClose }) {
+  if (!isModalVisible) {
+    return;
   }
 
-  componentWillUnmount() {
-    document.body.removeEventListener('mousedown', this.handleClickOutside);
-    document.body.removeEventListener('keydown', this.handleKeyDown);
-  }
-
-  componentDidUpdate() {
-    console.log(this.props);
-
-    if (!this.modalRef?.current) {
-      return;
-    }
-
-    if (this.props.isVisible) {
-      this.modalRef.current.showModal();
-    } else {
-      this.modalRef.current.close();
-    }
-  }
-
-  handleModalClose = () => {
-    this.modalRef.current.close();
-  };
-
-  handleKeyDown = event => {
-    // console.log(event.key);
-    if (event.key === 'Escape') {
-      this.handleModalClose();
-    }
-  };
-
-  handleClickOutside = event => {
-    // console.log(event.target);
-    if (
-      this.modalContentRef.current &&
-      !this.modalContentRef.current.contains(event.target)
-    ) {
-      this.handleModalClose();
-    }
-  };
-
-  render() {
-    const { isVisible } = this.props;
-
-    if (!isVisible) {
-      return;
-    }
-
-    return (
-      <dialog id="modal" className={styles.modalClassName} ref={this.modalRef}>
-        <div ref={this.modalContentRef}>
-          <h1>This is a modal.</h1>
-          <button id="closeModal" onClick={this.handleModalClose}>
-            Close modal
+  return (
+    isModalVisible && (
+      <dialog className={styles.modalClassName}>
+        <div className={styles.content}>
+          <button
+            className={styles.closeModal}
+            id="closeModal"
+            onClick={handleModalClose}
+          >
+            <HiX size="24px" />
           </button>
+          <img className={styles.pencil} src={pencil} alt="pencil" />
+          <p className={styles.modalTitle}>edit city information</p>
+          <div className={styles.inputCont}>
+            <Input
+              type={'text'}
+              label={'City'}
+              // value={city}
+              name="city"
+              // handleChange={this.handleInviteButtonChange}
+              required={true}
+            />
+          </div>
+          <Button disabled={false} type="submit" variant={'notActive'}>
+            save
+          </Button>
         </div>
       </dialog>
-    );
-  }
+    )
+  );
 }
 
+Modal.propTypes = {
+  isModalVisible: PropTypes.bool.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
+};
+
 export default Modal;
+
+// export class Modal extends Component {
+//   static propTypes = {
+//     isModalVisible: PropTypes.bool.isRequired,
+//     handleModalClose: PropTypes.func.isRequired,
+//   };
+
+//   render() {
+//     const { isModalVisible, handleModalClose } = this.props;
+
+//     if (!isModalVisible) {
+//       return;
+//     }
+
+//     return (
+//       isModalVisible && (
+//         <dialog className={styles.modalClassName}>
+//           <div className={styles.content}>
+//             <button
+//               className={styles.closeModal}
+//               id="closeModal"
+//               onClick={handleModalClose}
+//             >
+//               <HiX size="24px" />
+//             </button>
+//             <img className={styles.pencil} src={pencil} alt="pencil" />
+//             <p className={styles.modalTitle}>edit city information</p>
+//             <div className={styles.inputCont}>
+//               <Input
+//                 type={'text'}
+//                 label={'City'}
+//                 // value={city}
+//                 name="city"
+//                 // handleChange={this.handleInviteButtonChange}
+//                 required={true}
+//               />
+//             </div>
+//             <Button disabled={false} type="submit" variant={'notActive'}>
+//               save
+//             </Button>
+//           </div>
+//         </dialog>
+//       )
+//     );
+//   }
+// }
+
+// export default Modal;

@@ -1,5 +1,5 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   HiAcademicCap,
   HiBookOpen,
@@ -9,23 +9,15 @@ import {
 import Button from 'components/common/Button';
 import Menu from './Menu/Menu';
 
-import { Component } from 'react';
+// import { Component } from 'react';
 import clsx from 'clsx';
-// import { isVisible } from '@testing-library/user-event/dist/utils';
 
 import styles from './Sidebar.module.css';
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMenuVisible: true,
-    };
+function Sidebar(props) {
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  menuItems = [
+  const menuItems = [
     {
       name: 'University',
       icon: <HiBookOpen />,
@@ -36,64 +28,149 @@ class Sidebar extends Component {
     },
   ];
 
-  componentDidMount() {
+  useEffect(() => {
     setTimeout(() => console.log('Am inceput numaratoarea', 1000), 1000);
-  }
 
-  componentWillUnmount() {
-    clearTimeout();
-    console.log('Am oprit numaratoarea');
-  }
-
-  handleClick() {
-    // console.log(this.state.isVisible);
-
-    this.setState({
-      isMenuVisible: !this.state.isMenuVisible,
-    });
-  }
-
-  render() {
-    const isMenuVisible = this.state.isMenuVisible;
-
-    // const Status = () => {
-    //   if (isMenuVisible) {
-    //     // console.log('hi');
-    //     return (
-    //       <Button customStyles={styles.button} handleClick={this.handleClick}>
-    //         <HiChevronLeft />
-    //       </Button>
-    //     );
-    //   } else {
-    //     // console.log('bye');
-    //     return (
-    //       <Button customStyles={styles.button} handleClick={this.handleClick}>
-    //         <HiChevronRight />
-    //       </Button>
-    //     );
-    //   }
-    // };
-
-    const SidebarButtonArrowStatus = () => {
-      if (isMenuVisible) {
-        return <HiChevronLeft />;
-      } else {
-        return <HiChevronRight />;
-      }
+    return () => {
+      clearTimeout();
+      console.log('Am oprit numaratoarea');
     };
+  }, []);
 
-    return (
-      <aside className={clsx(styles.sidebar, !isMenuVisible && styles.hide)}>
-        <div className={styles.sidebarHeader}></div>
-        {/* {Status()} */}
-        <Button customStyles={styles.button} handleClick={this.handleClick}>
-          <SidebarButtonArrowStatus />
-        </Button>
+  function handleClick() {
+    console.log(isMenuVisible);
 
-        <Menu items={this.menuItems} isVisible={isMenuVisible} />
-      </aside>
-    );
+    setIsMenuVisible(!isMenuVisible);
   }
+
+  // function Status() {
+  //   if (isMenuVisible) {
+  //     // console.log('hi');
+  //     return (
+  //       <Button customStyles={styles.button} handleClick={handleClick}>
+  //         <HiChevronLeft />
+  //       </Button>
+  //     );
+  //   } else {
+  //     // console.log('bye');
+  //     return (
+  //       <Button customStyles={styles.button} handleClick={handleClick}>
+  //         <HiChevronRight />
+  //       </Button>
+  //     );
+  //   }
+  // }
+
+  function SidebarButtonArrowStatus() {
+    if (isMenuVisible) {
+      return <HiChevronLeft />;
+    } else {
+      return <HiChevronRight />;
+    }
+  }
+
+  return (
+    <aside className={clsx(styles.sidebar, !isMenuVisible && styles.hide)}>
+      <div className={styles.sidebarHeader}></div>
+      {/* {Status()} */}
+      <Button customStyles={styles.button} handleClick={handleClick}>
+        <SidebarButtonArrowStatus />
+      </Button>
+
+      <Menu items={menuItems} isVisible={isMenuVisible} />
+    </aside>
+  );
 }
 
+Sidebar.propTypes = {
+  isMenuVisible: PropTypes.bool.isRequired,
+};
+
 export default Sidebar;
+
+// class Sidebar extends Component {
+//   static propTypes = {
+//     isMenuVisible: PropTypes.bool.isRequired,
+//   };
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       isMenuVisible: true,
+//     };
+
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+//   menuItems = [
+//     {
+//       name: 'University',
+//       icon: <HiBookOpen />,
+//     },
+//     {
+//       name: 'Faculties',
+//       icon: <HiAcademicCap />,
+//     },
+//   ];
+
+//   componentDidMount() {
+//     setTimeout(() => console.log('Am inceput numaratoarea', 1000), 1000);
+//   }
+
+//   componentWillUnmount() {
+//     clearTimeout();
+//     console.log('Am oprit numaratoarea');
+//   }
+
+//   handleClick() {
+//     // console.log(this.state.isVisible);
+
+//     this.setState({
+//       isMenuVisible: !this.state.isMenuVisible,
+//     });
+//   }
+
+//   render() {
+//     const isMenuVisible = this.state.isMenuVisible;
+
+//     // const Status = () => {
+//     //   if (isMenuVisible) {
+//     //     // console.log('hi');
+//     //     return (
+//     //       <Button customStyles={styles.button} handleClick={this.handleClick}>
+//     //         <HiChevronLeft />
+//     //       </Button>
+//     //     );
+//     //   } else {
+//     //     // console.log('bye');
+//     //     return (
+//     //       <Button customStyles={styles.button} handleClick={this.handleClick}>
+//     //         <HiChevronRight />
+//     //       </Button>
+//     //     );
+//     //   }
+//     // };
+
+//     const SidebarButtonArrowStatus = () => {
+//       if (isMenuVisible) {
+//         return <HiChevronLeft />;
+//       } else {
+//         return <HiChevronRight />;
+//       }
+//     };
+
+//     return (
+//       <aside className={clsx(styles.sidebar, !isMenuVisible && styles.hide)}>
+//         <div className={styles.sidebarHeader}></div>
+//         {/* {Status()} */}
+//         <Button customStyles={styles.button} handleClick={this.handleClick}>
+//           <SidebarButtonArrowStatus />
+//         </Button>
+
+//         <Menu items={this.menuItems} isVisible={isMenuVisible} />
+//       </aside>
+//     );
+//   }
+// }
+
+// export default Sidebar;
