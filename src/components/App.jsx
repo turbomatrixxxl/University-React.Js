@@ -5,7 +5,13 @@ import data from '../utils/data.json';
 
 function App() {
   useEffect(() => {
+    // localStorage.clear();
+    // console.log(data);
+    localStorage.setItem('name', JSON.stringify(data?.name));
+    localStorage.setItem('description', JSON.stringify(data?.description));
     localStorage.setItem('tutors', JSON.stringify(data?.tutors));
+    localStorage.setItem('cities', JSON.stringify(data?.cities));
+    localStorage.setItem('department', JSON.stringify(data?.department));
   }, []);
 
   return (

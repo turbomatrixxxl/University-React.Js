@@ -29,7 +29,7 @@ function Sidebar(props) {
   ];
 
   useEffect(() => {
-    setTimeout(() => console.log('Am inceput numaratoarea', 1000), 1000);
+    setTimeout(() => console.log('Am inceput numaratoarea', 5000), 5000);
 
     return () => {
       clearTimeout();
@@ -38,7 +38,7 @@ function Sidebar(props) {
   }, []);
 
   function handleClick() {
-    console.log(isMenuVisible);
+    // console.log(isMenuVisible);
 
     setIsMenuVisible(!isMenuVisible);
   }
@@ -82,8 +82,10 @@ function Sidebar(props) {
   );
 }
 
+// console.log('stop');
+
 Sidebar.propTypes = {
-  isMenuVisible: PropTypes.bool.isRequired,
+  isMenuVisible: PropTypes.bool,
 };
 
 export default Sidebar;

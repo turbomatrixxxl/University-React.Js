@@ -51,6 +51,10 @@ function TutorsList(props) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('tutors', JSON.stringify(tutors));
+  }, [tutors]);
+
   function toggleForm() {
     setIsFormVisible(!isFormVisible);
   }
