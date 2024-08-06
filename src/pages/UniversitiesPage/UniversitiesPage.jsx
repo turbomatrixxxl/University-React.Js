@@ -1,21 +1,10 @@
 import University from 'components/main/University';
 import React from 'react';
 
-import TutorsList from '../../../components/main/TutorsList/TutorsList';
-import imageTutors from '../../../images/imageTutors.png';
+import TutorsList from 'components/main/TutorsList/TutorsList';
+import imageTutors from '../../images/imageTutors.png';
 
 import styles from './University.module.css';
-
-// import { NavLink } from 'react-router-dom';
-// import styled from 'styled-components';
-
-// const StyledLink = styled(NavLink)`
-//   color: black;
-
-//   &.active {
-//     color: #ff6b0a;
-//   }
-// `;
 
 export default function UniversitiesPage() {
   return (
@@ -32,7 +21,6 @@ export default function UniversitiesPage() {
           <TutorsList />
         </section>
       </div>
-      y
     </>
   );
 }

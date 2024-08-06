@@ -1,4 +1,8 @@
-import UniversitiesPage from 'components/pages/UniversitiesPage/UniversitiesPage';
+import FacultieContent from 'components/FacultieContent/FacultieContent';
+import FacultyDescription from 'components/FacultieContent/FacultyDescription';
+import FacultyHistory from 'components/FacultieContent/FacultyHistory';
+import FacultiesPage from 'pages/FacultiesPage/FacultiesPage';
+import UniversitiesPage from 'pages/UniversitiesPage/UniversitiesPage';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import Paper from './Paper';
@@ -9,16 +13,30 @@ function main() {
   return (
     <main>
       <Routes>
-        <Route path="Uni/" element={<UniversitiesPage />} />
-        <Route path="/university" element={<UniversitiesPage />} />
+        <Route path="University-React.Js/" element={<UniversitiesPage />} />
+        <Route
+          path="University-React.Js/university"
+          element={<UniversitiesPage />}
+        />
+        <Route
+          path="University-React.Js/faculties"
+          element={<FacultiesPage />}
+        />
+        <Route
+          path="University-React.Js/faculties/:facultyName"
+          element={<FacultieContent />}
+        >
+          <Route path="" element={<FacultyDescription />} />
+          <Route path="description" element={<FacultyDescription />} />
+          <Route path="history" element={<FacultyHistory />} />
+        </Route>
       </Routes>
-      {/* <UniversitiesPage /> */}
     </main>
   );
 }
 
 export default main;
-v;
+
 // class Main extends Component {
 //   // const data = {
 //   //   name: 'MIT',
@@ -42,21 +60,20 @@ v;
 //   //       options: 'Group creation, editing teacher profiles',
 //   //     },
 //   //   ],
-//   //   cities: [ W TTRYU67'Kyiv', 'London', 'Berlin'],
-//   //   department: [YUTR5
-//   //     { name: 'FacultyYU67 of Computer Science' },
+//   //   cities: ['Kyiv', 'London', 'Berlin'],
+//   //   department: [
+//   //     { name: 'Faculty of Computer Science' },
 //   //     { name: 'Faculty of Automation' },
 //   //     { name: 'Faculty of +Neural Networks' },
 //   //   ],
 //   // };
-
 //   // state = {
 //   //   isModalVisible: false,
 //   // };
-//   // //   console.log(styles);
+//   // //
 //   // handleOpenModal = () => {
 //   //   this.setState({
-//   //     isModalVisible: !this.state.isModalVisible,
+//G   //     isModalVisible: !this.state.isMwodalVisible,
 //   //   });
 //   //   console.log('open');
 //   // };
@@ -64,12 +81,10 @@ v;
 //   render() {
 //     return (
 //       <main>
-//  q`1[]iyutr5 q`1         <p className={styles.firstTitle}>university information</p>
+//  <p className={styles.firstTitle}>university information</p>
 //         <div className={styles.mainContent}>
 //           <University />
 
--[P]I=8
- '[]I\/]I'
 //           <section className={styles.tutorsSection}>
 //             <div className={styles.tutorsHeaderContainer}>
 //               <img className={styles.tutorsImg} src={imageTutors} alt="Fox" />

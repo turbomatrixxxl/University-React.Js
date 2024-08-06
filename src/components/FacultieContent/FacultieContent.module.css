@@ -1,0 +1,64 @@
+.paper {
+  background: #fff;
+  /* Shadow1 */
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  /* width: 997.455px; */
+  /* height: 180px; */
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 24px 29px;
+
+  color: #010101;
+
+  /* Основной текст regular 16-24-0.5 */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.title {
+  color: #010101;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+.links {
+  align-items: center;
+  display: flex;
+  background: #161d2a;
+  margin-top: 28px;
+  margin-bottom: 24px;
+  padding: 12px 0;
+}
+
+.link {
+  display: flex;
+  width: 264px;
+  height: 24px;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-shrink: 0;
+
+  color: var(--common-white, #fff);
+  text-align: center;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.71429; /* 171.429% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
