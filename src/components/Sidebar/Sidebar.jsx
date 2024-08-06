@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   HiAcademicCap,
@@ -13,9 +13,13 @@ import Menu from './Menu/Menu';
 import clsx from 'clsx';
 
 import styles from './Sidebar.module.css';
+import useToggle from 'hooks/useToggle';
 
 function Sidebar(props) {
-  const [isMenuVisible, setIsMenuVisible] = useState(true);
+  // const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+  const [isMenuVisible, handleClick] = useToggle(true);
+  console.log(isMenuVisible);
 
   const menuItems = [
     {
@@ -37,11 +41,11 @@ function Sidebar(props) {
     };
   }, []);
 
-  function handleClick() {
-    // console.log(isMenuVisible);
+  // function handleClick() {
+  //   // console.log(isMenuVisible);
 
-    setIsMenuVisible(!isMenuVisible);
-  }
+  //   setIsMenuVisible(!isMenuVisible);
+  // }
 
   // function Status() {
   //   if (isMenuVisible) {
@@ -62,6 +66,7 @@ function Sidebar(props) {
   // }
 
   function SidebarButtonArrowStatus() {
+    console.log(isMenuVisible);
     if (isMenuVisible) {
       return <HiChevronLeft />;
     } else {

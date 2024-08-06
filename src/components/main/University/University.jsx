@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Paper from '../Paper';
 import sidebarSchoolImage from '../../../images/School@2x 1.png';
 import { HiTrash } from 'react-icons/hi2';
@@ -10,8 +10,12 @@ import Modal from 'components/Modal';
 function University() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const dialogRef = useRef();
+  const contRef = useRef();
+
   useEffect(() => {
     document.body.addEventListener('keydown', handleKeyDown);
+    document.body.addEventListener('mousedown', handleClickOutside);
 
     function handleKeyDown(event) {
       // console.log(event.key);
@@ -21,8 +25,20 @@ function University() {
       }
     }
 
+    function handleClickOutside(event) {
+      // console.log(event.target);
+
+      if (
+        event.target === dialogRef.current &&
+        event.target !== contRef.current
+      ) {
+        handleModalClose();
+      }
+    }
+
     return () => {
       document.body.removeEventListener('keydown', handleKeyDown);
+      document.body.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -39,6 +55,8 @@ function University() {
   return (
     <section className={styles.section}>
       <Modal
+        dialogRef={dialogRef}
+        contRef={contRef}
         handleModalClose={handleModalClose}
         isModalVisible={isModalVisible}
       />

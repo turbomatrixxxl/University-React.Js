@@ -26,7 +26,7 @@ function Menu({ items, isVisible }) {
 
 Menu.propTypes = {
   items: PropTypes.array.isRequired,
-  isVisible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool,
 };
 
 export default Menu;

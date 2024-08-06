@@ -7,6 +7,8 @@ import axios from 'axios';
 import Loading from 'components/common/Loading';
 import Alert from 'components/common/Alert';
 import { HiPlus } from 'react-icons/hi';
+import useToggle from 'hooks/useToggle';
+import { useDebounce } from '@uidotdev/usehooks';
 
 import styles from './TutorsList.module.css';
 // import data from '../../../utils/data.json';
@@ -23,8 +25,13 @@ const INITIAL_FORM_VALUE = {
 
 function TutorsList(props) {
   const [searchTherm, setSearchTherm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTherm, 1000);
+
   const [tutors, setTutors] = useState([]);
-  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  // const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isFormVisible, toggleForm] = useToggle(false);
+
   const [loading, setIsLoading] = useState(false);
   const [disabled, setIsDisabled] = useState(true);
   const [error, setError] = useState(null);
@@ -55,9 +62,9 @@ function TutorsList(props) {
     localStorage.setItem('tutors', JSON.stringify(tutors));
   }, [tutors]);
 
-  function toggleForm() {
-    setIsFormVisible(!isFormVisible);
-  }
+  // function toggleForm() {
+  //   setIsFormVisible(!isFormVisible);
+  // }
 
   function handleChange(ev) {
     // console.log(ev.target.value);
@@ -147,8 +154,8 @@ function TutorsList(props) {
     const name = tutor.lastName;
     const surName = tutor.firstName;
     const isFound =
-      name.toLowerCase().includes(searchTherm.toLowerCase()) ||
-      surName.toLowerCase().includes(searchTherm.toLowerCase());
+      name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+      surName.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
     // console.log(isFound);
 
     return isFound;

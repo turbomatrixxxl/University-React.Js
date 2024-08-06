@@ -8,15 +8,15 @@ import pencil from '../../images/school.png';
 
 import styles from './Modal.module.css';
 
-function Modal({ isModalVisible, handleModalClose }) {
+function Modal({ isModalVisible, handleModalClose, dialogRef, contRef }) {
   if (!isModalVisible) {
     return;
   }
 
   return (
     isModalVisible && (
-      <dialog className={styles.modalClassName}>
-        <div className={styles.content}>
+      <dialog ref={dialogRef} className={styles.modalClassName}>
+        <div ref={contRef} className={styles.content}>
           <button
             className={styles.closeModal}
             id="closeModal"
