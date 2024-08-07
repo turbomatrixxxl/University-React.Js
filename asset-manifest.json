@@ -1,13 +1,28 @@
 {
   "files": {
-    "main.css": "/University-React.Js/static/css/main.d69a0843.css",
-    "main.js": "/University-React.Js/static/js/main.474f9c7a.js",
+    "main.css": "/University-React.Js/static/css/main.037dce9b.css",
+    "main.js": "/University-React.Js/static/js/main.ce3a1471.js",
+    "static/css/746.8621b0f8.chunk.css": "/University-React.Js/static/css/746.8621b0f8.chunk.css",
+    "static/js/746.5a85dd4e.chunk.js": "/University-React.Js/static/js/746.5a85dd4e.chunk.js",
+    "static/css/117.d1311736.chunk.css": "/University-React.Js/static/css/117.d1311736.chunk.css",
+    "static/js/117.b2787f20.chunk.js": "/University-React.Js/static/js/117.b2787f20.chunk.js",
+    "static/js/391.a23a9d5b.chunk.js": "/University-React.Js/static/js/391.a23a9d5b.chunk.js",
+    "static/js/494.d6c7ee51.chunk.js": "/University-React.Js/static/js/494.d6c7ee51.chunk.js",
+    "static/js/804.803d6c42.chunk.js": "/University-React.Js/static/js/804.803d6c42.chunk.js",
+    "static/media/browser-error-404-icon.svg": "/University-React.Js/static/media/browser-error-404-icon.a35d6f1908cf15fbd5a68f279a5f52d8.svg",
     "index.html": "/University-React.Js/index.html",
-    "main.d69a0843.css.map": "/University-React.Js/static/css/main.d69a0843.css.map",
-    "main.474f9c7a.js.map": "/University-React.Js/static/js/main.474f9c7a.js.map"
+    "main.037dce9b.css.map": "/University-React.Js/static/css/main.037dce9b.css.map",
+    "main.ce3a1471.js.map": "/University-React.Js/static/js/main.ce3a1471.js.map",
+    "746.8621b0f8.chunk.css.map": "/University-React.Js/static/css/746.8621b0f8.chunk.css.map",
+    "746.5a85dd4e.chunk.js.map": "/University-React.Js/static/js/746.5a85dd4e.chunk.js.map",
+    "117.d1311736.chunk.css.map": "/University-React.Js/static/css/117.d1311736.chunk.css.map",
+    "117.b2787f20.chunk.js.map": "/University-React.Js/static/js/117.b2787f20.chunk.js.map",
+    "391.a23a9d5b.chunk.js.map": "/University-React.Js/static/js/391.a23a9d5b.chunk.js.map",
+    "494.d6c7ee51.chunk.js.map": "/University-React.Js/static/js/494.d6c7ee51.chunk.js.map",
+    "804.803d6c42.chunk.js.map": "/University-React.Js/static/js/804.803d6c42.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d69a0843.css",
-    "static/js/main.474f9c7a.js"
+    "static/css/main.037dce9b.css",
+    "static/js/main.ce3a1471.js"
   ]
 }
