@@ -34,6 +34,17 @@
   text-transform: uppercase;
 }
 
+.back {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  background: #161d2a;
+  margin-top: 28px;
+  margin-bottom: 24px;
+  padding: 12px 0;
+  width: fit-content;
+}
+
 .links {
   align-items: center;
   display: flex;

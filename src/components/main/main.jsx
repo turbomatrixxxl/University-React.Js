@@ -1,10 +1,23 @@
-import FacultieContent from 'components/FacultieContent/FacultieContent';
+import React, { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+// import FacultieContent from 'components/FacultieContent/FacultieContent';
 import FacultyDescription from 'components/FacultieContent/FacultyDescription';
 import FacultyHistory from 'components/FacultieContent/FacultyHistory';
-import FacultiesPage from 'pages/FacultiesPage/FacultiesPage';
-import UniversitiesPage from 'pages/UniversitiesPage/UniversitiesPage';
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+// import FacultiesPage from 'pages/FacultiesPage/FacultiesPage';
+import LoadingPage from 'pages/LoadingPage';
+// import UniversitiesPage from 'pages/UniversitiesPage/UniversitiesPage';
+import NotFoundPage from 'pages/NotFoundPage';
+
+const LazyUniversitiesPage = lazy(() =>
+  import('pages/UniversitiesPage/UniversitiesPage')
+);
+const LazyFacultiesPage = lazy(() =>
+  import('pages/FacultiesPage/FacultiesPage')
+);
+const LazyFacultieContent = lazy(() =>
+  import('components/FacultieContent/FacultieContent')
+);
 // import Paper from './Paper';
 
 // import data from '../../utils/data.json';
@@ -12,25 +25,35 @@ import { Route, Routes } from 'react-router-dom';
 function main() {
   return (
     <main>
-      <Routes>
-        <Route path="University-React.Js/" element={<UniversitiesPage />} />
-        <Route
-          path="University-React.Js/university"
-          element={<UniversitiesPage />}
-        />
-        <Route
-          path="University-React.Js/faculties"
-          element={<FacultiesPage />}
-        />
-        <Route
-          path="University-React.Js/faculties/:facultyName"
-          element={<FacultieContent />}
-        >
-          <Route path="" element={<FacultyDescription />} />
-          <Route path="description" element={<FacultyDescription />} />
-          <Route path="history" element={<FacultyHistory />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<LoadingPage />}>
+        <Routes>
+          <Route
+            path="University-React.Js/"
+            element={<LazyUniversitiesPage />}
+          />
+          <Route
+            path="University-React.Js/university"
+            element={<LazyUniversitiesPage />}
+          />
+          <Route
+            path="University-React.Js/faculties"
+            element={<LazyFacultiesPage />}
+          />
+          <Route
+            path="University-React.Js/faculties/:facultyName"
+            element={<LazyFacultieContent />}
+          >
+            <Route path="" element={<FacultyDescription />} />
+            <Route path="description" element={<FacultyDescription />} />
+            <Route path="history" element={<FacultyHistory />} />
+          </Route>
+
+          <Route
+            path="*"
+            element={<NotFoundPage initPage="University-React.Js" />}
+          />
+        </Routes>
+      </Suspense>
     </main>
   );
 }
