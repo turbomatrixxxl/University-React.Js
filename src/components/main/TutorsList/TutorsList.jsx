@@ -4,13 +4,18 @@ import TutorItem from './Tutor/TutorItem';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import axios from 'axios';
-import Loading from 'components/common/Loading';
-import Alert from 'components/common/Alert';
+// import Loading from 'components/common/Loading';
+// import Alert from 'components/common/Alert';
 import { HiPlus } from 'react-icons/hi';
 import useToggle from 'hooks/useToggle';
 import { useDebounce } from '@uidotdev/usehooks';
+import { useSelector, useDispatch } from 'react-redux';
+// import { addTutor, deleteTutor } from '../../../redux/tutors/actions';
+import { addTutor, deleteTutor } from '../../../redux/tutors/tutorsSlice';
 
 import styles from './TutorsList.module.css';
+import { getTutors } from '../../../redux/tutors/selectors';
+
 // import data from '../../../utils/data.json';
 
 axios.defaults.baseURL = 'http://localhost:3001';
@@ -27,41 +32,52 @@ function TutorsList(props) {
   const [searchTherm, setSearchTherm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTherm, 1000);
 
-  const [tutors, setTutors] = useState([]);
+  // const [tutors, setTutors] = useState([]);
 
+  //! Without hook
   // const [isFormVisible, setIsFormVisible] = useState(false);
+
+  //! With persomalized hook
   const [isFormVisible, toggleForm] = useToggle(false);
 
-  const [loading, setIsLoading] = useState(false);
+  //! Without redux
+  // const [loading, setIsLoading] = useState(false);
   const [disabled, setIsDisabled] = useState(true);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [newTutor, setNewTutor] = useState(INITIAL_FORM_VALUE);
 
+  const tutorsRedux = useSelector(getTutors);
+  // console.log(tutorsRedux);
+
+  const dispatch = useDispatch();
+
+  //! Without redux and from json server
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const response = await axios.get('/tutors');
+  //       // console.log(response.data);
+
+  //       const tutorsFromServer = response.data;
+  //       setTutors(tutorsFromServer);
+  //       setError(null);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //       setError('Lista de tutori nu a fost gasita !');
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get('/tutors');
-        // console.log(response.data);
+    localStorage.setItem('tutors', JSON.stringify(tutorsRedux));
+  }, [tutorsRedux]);
 
-        const tutorsFromServer = response.data;
-        setTutors(tutorsFromServer);
-        setError(null);
-      } catch (error) {
-        console.log(error.message);
-        setError('Lista de tutori nu a fost gasita !');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('tutors', JSON.stringify(tutors));
-  }, [tutors]);
-
+  //! Without hook
   // function toggleForm() {
   //   setIsFormVisible(!isFormVisible);
   // }
@@ -85,60 +101,65 @@ function TutorsList(props) {
     setIsDisabled(false);
   }
 
-  async function addTutor(ev) {
-    const isExist = tutors.filter(tutor => {
-      const name = newTutor.lastName.includes(tutor.lastName);
-      const surname = newTutor.firstName.includes(tutor.firstName);
+  //! Without redux and from json server
+  // async function addTutor(ev) {
+  //   const isExist = tutorsRedux.filter(tutor => {
+  //     const name = newTutor.lastName.includes(tutor.lastName);
+  //     const surname = newTutor.firstName.includes(tutor.firstName);
 
-      return name && surname;
-    });
+  //     return name && surname;
+  //   });
 
-    try {
-      if (isExist.length > 0) {
-        alert('This name is already in the list !');
+  //   try {
+  //     if (isExist.length > 0) {
+  //       alert('This name is already in the list !');
 
-        setIsDisabled(true);
+  //       setIsDisabled(true);
 
-        ev.target.reset();
-        return;
-      }
+  //       ev.target.reset();
+  //       return;
+  //     }
 
-      // console.log(isExist);
+  //     // console.log(isExist);
 
-      const response = await axios.post('/tutors', newTutor);
-      // console.log(response.data);
+  //     const response = await axios.post('/tutors', newTutor);
+  //     // console.log(response.data);
 
-      setTutors([...tutors, response.data]);
-      setNewTutor(INITIAL_FORM_VALUE);
-      setIsDisabled(true);
-    } catch (error) {
-      setError('Tutorul nu a putut fi adaugat');
+  //     setTutors([...tutors, response.data]);
+  //     setNewTutor(INITIAL_FORM_VALUE);
+  //     setIsDisabled(true);
+  //   } catch (error) {
+  //     setError('Tutorul nu a putut fi adaugat');
 
-      ev.target.reset();
-    }
-  }
+  //     ev.target.reset();
+  //   }
+  // }
 
   function handleSubmit(ev) {
     ev.preventDefault();
+    //! Without redux and from json server
+    // addTutor(ev);
 
-    addTutor(ev);
+    // With redux
+    dispatch(addTutor(newTutor));
 
     const form = ev.target;
+
     form.reset();
   }
 
-  async function deleteTutor(id) {
-    try {
-      await axios.delete(`tutors/${id}`);
-      const tutorsLeft = tutors.filter(tutor => tutor.id !== id);
-      setTutors(tutorsLeft);
-    } catch (error) {
-      setError('Tutorul nu a putut fi sters !');
-    }
-  }
+  // async function deleteTutor(id) {
+  //   try {
+  //     await axios.delete(`tutors/${id}`);
+  //     const tutorsLeft = tutors.filter(tutor => tutor.id !== id);
+  //     setTutors(tutorsLeft);
+  //   } catch (error) {
+  //     setError('Tutorul nu a putut fi sters !');
+  //   }
+  // }
 
   function getTutorsCount() {
-    return tutors.length;
+    return tutorsRedux.length;
   }
 
   function searchThermHandleChange(e) {
@@ -149,7 +170,7 @@ function TutorsList(props) {
     // console.log(this.state.searchTherm);
   }
 
-  const getTutorsBySearchTherm = tutors.filter(tutor => {
+  const getTutorsBySearchTherm = tutorsRedux.filter(tutor => {
     // const searchTherm = this.state.searchTherm;
     const name = tutor.lastName;
     const surName = tutor.firstName;
@@ -160,6 +181,10 @@ function TutorsList(props) {
 
     return isFound;
   });
+
+  async function delTutor(id) {
+    return dispatch(deleteTutor(id));
+  }
 
   return (
     <div className={styles.listContainer}>
@@ -174,18 +199,19 @@ function TutorsList(props) {
 
       <div>
         <ul className={styles.list}>
-          {loading && <Loading />}
+          {/* {loading && <Loading />} */}
 
-          {error && <Alert message={error} />}
+          {/* {error && <Alert message={error} />} */}
 
           {getTutorsBySearchTherm.map(tutor => {
             return (
               <TutorItem
                 key={tutor.id}
                 item={tutor}
-                handleDelete={() => {
-                  deleteTutor(tutor.id);
-                }}
+                // handleDelete={() => {
+                //   deleteTutor(tutor.id);
+                // }}
+                handleDelete={() => delTutor(tutor.id)}
               />
             );
           })}

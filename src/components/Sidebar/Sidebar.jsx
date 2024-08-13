@@ -19,7 +19,7 @@ function Sidebar(props) {
   // const [isMenuVisible, setIsMenuVisible] = useState(true);
 
   const [isMenuVisible, handleClick] = useToggle(true);
-  console.log(isMenuVisible);
+  // console.log(isMenuVisible);
 
   const menuItems = [
     {
@@ -66,7 +66,7 @@ function Sidebar(props) {
   // }
 
   function SidebarButtonArrowStatus() {
-    console.log(isMenuVisible);
+    // console.log(isMenuVisible);
     if (isMenuVisible) {
       return <HiChevronLeft />;
     } else {
