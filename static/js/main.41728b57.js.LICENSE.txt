@@ -82,3 +82,5 @@
  *
  * @license MIT
  */
+
+//! fara asynkThunk
