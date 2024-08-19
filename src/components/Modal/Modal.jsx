@@ -8,7 +8,15 @@ import pencil from '../../images/school.png';
 
 import styles from './Modal.module.css';
 
-function Modal({ isModalVisible, handleModalClose, dialogRef, contRef }) {
+function Modal({
+  isModalVisible,
+  handleModalClose,
+  handleChange,
+  handleSave,
+  cityName,
+  dialogRef,
+  contRef,
+}) {
   if (!isModalVisible) {
     return;
   }
@@ -28,15 +36,20 @@ function Modal({ isModalVisible, handleModalClose, dialogRef, contRef }) {
           <p className={styles.modalTitle}>edit city information</p>
           <div className={styles.inputCont}>
             <Input
+              handleChange={handleChange}
               type={'text'}
               label={'City'}
-              // value={city}
+              value={cityName}
               name="city"
-              // handleChange={this.handleInviteButtonChange}
               required={true}
             />
           </div>
-          <Button disabled={false} type="submit" variant={'notActive'}>
+          <Button
+            handleClick={handleSave}
+            disabled={false}
+            type="submit"
+            variant={'notActive'}
+          >
             save
           </Button>
         </div>

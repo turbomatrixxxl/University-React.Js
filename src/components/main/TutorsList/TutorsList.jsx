@@ -4,17 +4,33 @@ import TutorItem from './Tutor/TutorItem';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import axios from 'axios';
-// import Loading from 'components/common/Loading';
-// import Alert from 'components/common/Alert';
+import Loading from 'components/common/Loading';
+import Alert from 'components/common/Alert';
 import { HiPlus } from 'react-icons/hi';
 import useToggle from 'hooks/useToggle';
 import { useDebounce } from '@uidotdev/usehooks';
 import { useSelector, useDispatch } from 'react-redux';
+
+//! with redux
 // import { addTutor, deleteTutor } from '../../../redux/tutors/actions';
-import { addTutor, deleteTutor } from '../../../redux/tutors/tutorsSlice';
+
+//? with toolkit
+// import { addTutor, deleteTutor } from '../../../redux/tutors/tutorsSlice';
+
+// * cu asynkThunk
+import {
+  getTutors,
+  getLoading,
+  getError,
+} from '../../../redux/tutors/selectors';
+import {
+  fetchTutors,
+  addTutor,
+  deleteTutor,
+} from '../../../redux/tutors/operations';
 
 import styles from './TutorsList.module.css';
-import { getTutors } from '../../../redux/tutors/selectors';
+import Cities from 'components/cities';
 
 // import data from '../../../utils/data.json';
 
@@ -46,8 +62,14 @@ function TutorsList(props) {
   // const [error, setError] = useState(null);
   const [newTutor, setNewTutor] = useState(INITIAL_FORM_VALUE);
 
-  const tutorsRedux = useSelector(getTutors);
+  // ! with toolkit
+  // const tutorsRedux = useSelector(getTutors);
   // console.log(tutorsRedux);
+
+  // * with asyncThunk
+  const tutorsThunk = useSelector(getTutors);
+  const LoadingThunk = useSelector(getLoading);
+  const errorThunk = useSelector(getError);
 
   const dispatch = useDispatch();
 
@@ -73,9 +95,15 @@ function TutorsList(props) {
   //   fetchData();
   // }, []);
 
+  // * with asyncThunk
   useEffect(() => {
-    localStorage.setItem('tutors', JSON.stringify(tutorsRedux));
-  }, [tutorsRedux]);
+    dispatch(fetchTutors());
+  }, [dispatch]);
+
+  // ! with toolkit
+  // useEffect(() => {
+  //   localStorage.setItem('tutors', JSON.stringify(tutorsRedux));
+  // }, [tutorsRedux]);
 
   //! Without hook
   // function toggleForm() {
@@ -146,6 +174,7 @@ function TutorsList(props) {
     const form = ev.target;
 
     form.reset();
+    toggleForm();
   }
 
   // async function deleteTutor(id) {
@@ -158,8 +187,14 @@ function TutorsList(props) {
   //   }
   // }
 
+  // ! with toolkit
+  // function getTutorsCount() {
+  //   return tutorsRedux.length;
+  // }
+
+  // * wiyh asynkThunk
   function getTutorsCount() {
-    return tutorsRedux.length;
+    return tutorsThunk.length;
   }
 
   function searchThermHandleChange(e) {
@@ -170,7 +205,21 @@ function TutorsList(props) {
     // console.log(this.state.searchTherm);
   }
 
-  const getTutorsBySearchTherm = tutorsRedux.filter(tutor => {
+  // ! with toolkit
+  // const getTutorsBySearchTherm = tutorsRedux.filter(tutor => {
+  //   // const searchTherm = this.state.searchTherm;
+  //   const name = tutor.lastName;
+  //   const surName = tutor.firstName;
+  //   const isFound =
+  //     name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+  //     surName.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
+  //   // console.log(isFound);
+
+  //   return isFound;
+  // });
+
+  // * wiyh asynkThunk
+  const getTutorsBySearchTherm = tutorsThunk.filter(tutor => {
     // const searchTherm = this.state.searchTherm;
     const name = tutor.lastName;
     const surName = tutor.firstName;
@@ -200,8 +249,10 @@ function TutorsList(props) {
       <div>
         <ul className={styles.list}>
           {/* {loading && <Loading />} */}
+          {LoadingThunk && <Loading />}
 
           {/* {error && <Alert message={error} />} */}
+          {errorThunk && <Alert message={errorThunk} />}
 
           {getTutorsBySearchTherm.map(tutor => {
             return (
@@ -269,7 +320,12 @@ function TutorsList(props) {
               handleChange={handleInviteButtonChange}
               required={true}
             />
-            <Button disabled={disabled} type="submit" variant={'notActive'}>
+            <Button
+              className={styles.inviteButton}
+              disabled={disabled}
+              type="submit"
+              variant={'notActive'}
+            >
               invite
             </Button>
           </form>
@@ -281,6 +337,8 @@ function TutorsList(props) {
         </span>{' '}
         Add Tutor
       </Button>
+
+      <Cities />
     </div>
   );
 }

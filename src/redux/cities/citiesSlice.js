@@ -1,6 +1,7 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { addTutor, deleteTutor } from './actions';
+//! fara asynkThunk
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
+//! fara asynkThunk
 const initialState = {
   tutors: [
     {
@@ -66,57 +67,57 @@ const initialState = {
   ],
 };
 
-//! fara toolkit
-// export const tutorsReducer = (state = initialState.tutors, action) => {
-//   console.log(action.type);
-//   console.log(action.payload);
+const citiesSlice = createSlice({
+  name: 'cities',
+  //! fara asynkThunk
+  initialState: initialState.cities,
 
-//   switch (action.type) {
-//     case 'tutors/addTutor':
-//       return [...state, action.payload];
-//     case 'tutors/deleteTutor':
-//       return state.filter(tutor => tutor.id !== action.payload.id);
-//     default:
-//       return state;
-//   }
-// };
+  //! fara asynkThunk
+  reducers: {
+    addCity: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(city) {
+        return {
+          payload: {
+            id: nanoid(),
+            ...city,
+          },
+        };
+      },
+    },
+    deleteCity: {
+      reducer(state, action) {
+        const index = state.findIndex(city => city.id === action.payload.id);
+        state.splice(index, 1);
+      },
+      prepare(cityId) {
+        return {
+          payload: { id: cityId },
+        };
+      },
+    },
+    editCity: {
+      reducer(state, action) {
+        const index = state.findIndex(city => city.id === action.payload.id);
+        state.splice(index, 1, action.payload);
+      },
+      prepare(cityId, cityName) {
+        return {
+          payload: {
+            id: cityId,
+            name: cityName,
+          },
+        };
+      },
+    },
+  },
 
-//? cu toolkit
-// fara create reducer
-// export const tutorsReducer = (state = initialState.tutors, action) => {
-//   console.log(action.type);
-//   console.log(action.payload);
-
-//   switch (action.type) {
-//     case addTutor.type:
-//       return [...state, action.payload];
-//     case deleteTutor.type:
-//       return state.filter(tutor => tutor.id !== action.payload.id);
-//     default:
-//       return state;
-//   }
-// };
-
-//? cu create reducer
-// fara immer cu return
-// export const tutorsReducer = createReducer(initialState.tutors, builder => {
-//   builder
-//     .addCase(addTutor, (state, action) => {
-//       return [...state, action.payload];
-//     })
-//     .addCase(deleteTutor, (state, action) => {
-//       return state.filter(tutor => tutor.id !== action.payload.id);
-//     });
-// });
-
-//* cu immer fara return
-export const tutorsReducer = createReducer(initialState.tutors, builder => {
-  builder
-    .addCase(addTutor, (state, action) => {
-      state.push(action.payload);
-    })
-    .addCase(deleteTutor, (state, action) => {
-      const index = state.findIndex(tutor => tutor.id === action.payload.id);
-      state.splice(index, 1);
-    });
+  // * cu asynkThunk
 });
+
+// Exportăm generatoarelor de acțiuni și reducer-ul
+//! fara asynkThunk
+export const { addCity, deleteCity, editCity } = citiesSlice.actions;
+export const citiesReducer = citiesSlice.reducer;

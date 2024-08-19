@@ -1,0 +1,48 @@
+.paper {
+  align-items: center;
+  background: #fff;
+  color: #424242;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding: 19px;
+  padding-left: 24px;
+  /* position: relative; */
+  width: 370px;
+
+  /*  regular 16-24-0.5 */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.cityName {
+  color: #424242;
+}
+
+.button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #424242;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  height: 24px;
+  padding: 5px;
+  width: 24px;
+}
+
+.button:hover {
+  background-color: #eceff1;
+}
+
+.menu {
+  margin-left: auto;
+  margin-top: -19px;
+  margin-right: 19px;
+}

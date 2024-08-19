@@ -1,3 +1,12 @@
+.formSection {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  /* width: 100%; */
+}
+
 .listContainer {
   display: flex;
   flex-direction: column;
@@ -143,4 +152,8 @@ flex-shrink: 0; */
 .svg {
   width: 20px;
   height: 20px;
+}
+
+.inviteButton {
+  margin-top: -12px;
 }

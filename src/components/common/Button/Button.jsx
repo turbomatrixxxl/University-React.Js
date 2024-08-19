@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
 function Button({
+  className,
   disabled,
   variant = '',
   type = '',
@@ -39,6 +40,7 @@ function Button({
     <button
       onClick={handleClick}
       className={clsx(
+        className,
         clsx(
           variant === 'primary'
             ? clsx(styles.button, styles.primary)

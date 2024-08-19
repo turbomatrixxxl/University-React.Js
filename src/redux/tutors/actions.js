@@ -1,9 +1,9 @@
 // import { nanoid } from 'nanoid';
 import { createAction, nanoid } from '@reduxjs/toolkit';
 
-// fara toolkit
+//! fara toolkit
 // export const addTutor = tutor => {
-//   //   console.log(tutor);
+//   console.log(tutor);
 
 //   return {
 //     type: 'tutors/addTutor',
@@ -20,7 +20,7 @@ import { createAction, nanoid } from '@reduxjs/toolkit';
 //   };
 // };
 
-// cu toolkit
+//* cu toolkit
 export const addTutor = createAction('tutors/addTutor', tutor => {
   return {
     payload: {
@@ -30,7 +30,7 @@ export const addTutor = createAction('tutors/addTutor', tutor => {
   };
 });
 
-// fara toolkit
+//! fara toolkit
 // export const deleteTutor = tutorId => {
 //   console.log(tutorId);
 
@@ -42,7 +42,7 @@ export const addTutor = createAction('tutors/addTutor', tutor => {
 //   };
 // };
 
-// cu toolkit
+//* cu toolkit
 export const deleteTutor = createAction('tutors/deleteTutor', tutorId => {
   console.log(tutorId);
 
