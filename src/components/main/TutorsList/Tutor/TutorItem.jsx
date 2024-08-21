@@ -52,6 +52,7 @@ function TutorItem({ item, handleDelete }) {
 
 TutorItem.propTypes = {
   item: PropTypes.object.isRequired,
+  handleDelete: PropTypes.func,
 };
 
 export default TutorItem;

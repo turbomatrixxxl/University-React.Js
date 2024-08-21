@@ -38,6 +38,7 @@ function MenuItem({ item, isActive, isVisible }) {
 MenuItem.propTypes = {
   item: PropTypes.object.isRequired,
   isActive: PropTypes.bool,
+  isVisible: PropTypes.bool,
 };
 
 export default MenuItem;

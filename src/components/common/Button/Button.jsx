@@ -65,6 +65,15 @@ function Button({
 Button.propTypes = {
   variant: PropTypes.string,
   customStyles: PropTypes.string,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  type: PropTypes.string,
+  handleClick: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 export default Button;

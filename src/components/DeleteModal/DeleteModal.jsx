@@ -14,6 +14,7 @@ function DeleteModal({
   handleDeleteNo,
   dialogDeleteRef,
   contDeleteRef,
+  infoName,
 }) {
   if (!isDeleteModalVisible) {
     return;
@@ -35,7 +36,7 @@ function DeleteModal({
           <div className={styles.modalTitleWarningContainer}>
             <p className={styles.modalTitle}>faculty removal</p>
             <p className={styles.modalDeleteWarning}>
-              All materials and information about the city will be removed
+              All materials and information about the {infoName} will be removed
             </p>
           </div>
 
@@ -64,8 +65,13 @@ function DeleteModal({
 }
 
 DeleteModal.propTypes = {
-  isModalVisible: PropTypes.bool,
-  handleModalClose: PropTypes.func,
+  isDeleteModalVisible: PropTypes.bool,
+  handleDeleteModalClose: PropTypes.func,
+  handleDeleteYes: PropTypes.func,
+  handleDeleteNo: PropTypes.func,
+  dialogDeleteRef: PropTypes.object,
+  contDeleteRef: PropTypes.object,
+  infoName: PropTypes.string,
 };
 
 export default DeleteModal;

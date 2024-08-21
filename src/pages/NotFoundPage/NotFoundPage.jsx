@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import notFound from '../../images/icons/browser-error-404-icon.svg';
 
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -27,3 +29,7 @@ export default function NotFoundPage({ initPage }) {
     </div>
   );
 }
+
+NotFoundPage.propTypes = {
+  initPage: PropTypes.string,
+};

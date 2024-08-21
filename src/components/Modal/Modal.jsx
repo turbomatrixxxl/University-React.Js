@@ -61,8 +61,15 @@ function Modal({
 }
 
 Modal.propTypes = {
-  isModalVisible: PropTypes.bool.isRequired,
-  handleModalClose: PropTypes.func.isRequired,
+  isModalVisible: PropTypes.bool,
+  handleModalClose: PropTypes.func,
+  handleChange: PropTypes.func,
+  handleSave: PropTypes.func,
+  dialogRef: PropTypes.object,
+  contRef: PropTypes.object,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default Modal;
