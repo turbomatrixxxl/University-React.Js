@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import data from '../../utils/data.json';
+// import data from '../../utils/data.json';
 
 import styles from './FacultieContent.module.css';
+import { useSelector } from 'react-redux';
+import { selectFaculties } from '../../redux/selectors';
 
 export default function FacultieContent() {
   const { facultyName } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/University-React.Js/faculties';
 
-  const faculty = data?.faculties?.find(
+  const faculties = useSelector(selectFaculties);
+
+  const faculty = faculties?.find(
     faculty => faculty.name.toLowerCase() === facultyName.toLowerCase()
   );
 

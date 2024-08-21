@@ -100,8 +100,10 @@ const citiesSlice = createSlice({
     },
     editCity: {
       reducer(state, action) {
+        console.log(action.payload);
+
         const index = state.findIndex(city => city.id === action.payload.id);
-        state.splice(index, 1, action.payload);
+        state.splice(index, 1, action.payload.id);
       },
       prepare(cityId, cityName) {
         return {

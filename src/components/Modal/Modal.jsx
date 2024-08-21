@@ -13,9 +13,11 @@ function Modal({
   handleModalClose,
   handleChange,
   handleSave,
-  cityName,
   dialogRef,
   contRef,
+  label,
+  name,
+  value,
 }) {
   if (!isModalVisible) {
     return;
@@ -33,14 +35,14 @@ function Modal({
             <HiX size="24px" />
           </button>
           <img className={styles.pencil} src={pencil} alt="pencil" />
-          <p className={styles.modalTitle}>edit city information</p>
+          <p className={styles.modalTitle}>Edit {label} information</p>
           <div className={styles.inputCont}>
             <Input
               handleChange={handleChange}
               type={'text'}
-              label={'City'}
-              value={cityName}
-              name="city"
+              label={label}
+              value={value}
+              name={name}
               required={true}
             />
           </div>

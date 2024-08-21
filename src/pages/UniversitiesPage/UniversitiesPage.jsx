@@ -1,3 +1,4 @@
+import React from 'react';
 import University from 'components/main/University';
 // import React, { useRef } from 'react';
 

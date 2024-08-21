@@ -1,5 +1,5 @@
 import Button from 'components/common/Button';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { HiPlus } from 'react-icons/hi';
 import citiesIcon from '../../images/citiesIcon.png';
 import useToggle from 'hooks/useToggle';
@@ -7,91 +7,30 @@ import useToggle from 'hooks/useToggle';
 import Input from 'components/common/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getCities } from '../../redux/cities/selectors';
-import { addCity, deleteCity, editCity } from '../../redux/cities/citiesSlice';
-import CityItem from './cityItem';
+import { getCities } from '../../redux/selectors';
+import { addCity, deleteCity, editCity } from '../../redux/citiesSlice';
+
+// import Modal from 'components/Modal';
+// import { nanoid } from 'nanoid';
+// import DeleteModal from 'components/DeleteModal';
+import InfoItemBlock from 'components/common/InfoItemBlock';
 
 import styles from './cities.module.css';
-import Modal from 'components/Modal';
-import { nanoid } from 'nanoid';
-import DeleteModal from 'components/DeleteModal';
 
 export default function Cities() {
   const [isFormVisible, toggleForm] = useToggle(false);
   const [disabled, setIsDisabled] = useState(true);
   const [newCity, setNewCity] = useState([]);
-  const [editedCity, setEditedCity] = useState([]);
+  // const [editedCity, setEditedCity] = useState([]);
 
   const dispatch = useDispatch();
-  const allCities = useSelector(getCities);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const allCities = useSelector(getCities);
 
   const dialogRef = useRef();
   const contRef = useRef();
   const dialogDeleteRef = useRef();
   const contDeleteRef = useRef();
-
-  useEffect(() => {
-    document.body.addEventListener('keydown', handleKeyDown);
-    document.body.addEventListener('mousedown', handleClickOutside);
-
-    function handleKeyDown(event) {
-      // console.log(event.key);
-
-      if (event.key === 'Escape') {
-        handleModalClose();
-        handleDeleteModalClose();
-      }
-    }
-
-    function handleClickOutside(event) {
-      // console.log(event.target);
-
-      if (
-        event.target === dialogRef.current &&
-        event.target !== contRef.current
-      ) {
-        handleModalClose();
-      }
-      if (
-        event.target === dialogDeleteRef.current &&
-        event.target !== contDeleteRef.current
-      ) {
-        handleDeleteModalClose();
-      }
-    }
-
-    return () => {
-      document.body.removeEventListener('keydown', handleKeyDown);
-      document.body.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  function handleModalClose() {
-    setIsModalVisible(false);
-  }
-
-  function handleDeleteModalClose() {
-    setIsDeleteModalVisible(false);
-  }
-
-  function handleOpenModal() {
-    setIsModalVisible(true);
-
-    // console.log('open');
-  }
-
-  function handleOpenDeleteModal() {
-    setIsDeleteModalVisible(true);
-
-    // console.log('open');
-  }
-
-  //   useEffect(() => {
-  //     localStorage.setItem('cities', JSON.stringify(allCities));
-  //   }, [allCities]);
 
   function handleAddButtonChange(ev) {
     const { name, value } = ev.target;
@@ -117,19 +56,14 @@ export default function Cities() {
     setNewCity([]);
   }
 
-  function handleEdit(ev) {
-    setEditedCity({
-      id: nanoid(),
-      name: ev.target.value,
-    });
-    // console.log(editedCity);
-    // console.log(ev.target.value);
-  }
-
-  function handleDeleteCity(id) {
-    // dispatch(deleteCity(id));
-    handleOpenDeleteModal();
-  }
+  // function handleEdit(ev) {
+  //   setEditedCity({
+  //     id: nanoid(),
+  //     name: ev.target.value,
+  //   });
+  //   // console.log(editedCity);
+  //   // console.log(ev.target.value);
+  // }
 
   return (
     <section className={styles.citiesSection}>
@@ -143,7 +77,7 @@ export default function Cities() {
         {allCities.map(city => {
           return (
             <li className={styles.citiesListItem} key={city.id}>
-              <DeleteModal
+              {/* <DeleteModal
                 isDeleteModalVisible={isDeleteModalVisible}
                 handleDeleteModalClose={handleDeleteModalClose}
                 dialogDeleteRef={dialogDeleteRef}
@@ -155,25 +89,38 @@ export default function Cities() {
                 }}
               />
               <Modal
-                cityName={city.name}
+                name={city.name}
+                label="City"
                 dialogRef={dialogRef}
                 contRef={contRef}
                 handleModalClose={handleModalClose}
                 isModalVisible={isModalVisible}
                 handleChange={handleEdit}
                 handleSave={() => {
+                  console.log(city);
+
                   dispatch(editCity(city.id, editedCity.name));
                   //   console.log(allCities);
 
                   handleModalClose();
                 }}
-              />
-              <CityItem
-                handleEditCity={handleOpenModal}
-                handleDeleteCity={() => handleDeleteCity(city.id)}
+              /> */}
+              <InfoItemBlock
+                id={city.id}
+                contDeleteRef={contDeleteRef}
+                dialogDeleteRef={dialogDeleteRef}
+                contRef={contRef}
+                dialogRef={dialogRef}
+                onDelete={deleteCity}
+                onEdit={editCity}
+                name="name"
+                label="City"
+                value={city.name}
+                className={styles.paper}
+                divClassName={styles.info}
               >
                 {city.name}
-              </CityItem>
+              </InfoItemBlock>
             </li>
           );
         })}

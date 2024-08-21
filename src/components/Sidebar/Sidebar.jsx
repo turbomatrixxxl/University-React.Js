@@ -15,7 +15,7 @@ import clsx from 'clsx';
 import styles from './Sidebar.module.css';
 import useToggle from 'hooks/useToggle';
 
-function Sidebar(props) {
+function Sidebar() {
   // const [isMenuVisible, setIsMenuVisible] = useState(true);
 
   const [isMenuVisible, handleClick] = useToggle(true);

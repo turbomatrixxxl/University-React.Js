@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TutorItem from './Tutor/TutorItem';
 import Input from 'components/common/Input';
@@ -18,19 +18,14 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { addTutor, deleteTutor } from '../../../redux/tutors/tutorsSlice';
 
 // * cu asynkThunk
-import {
-  getTutors,
-  getLoading,
-  getError,
-} from '../../../redux/tutors/selectors';
-import {
-  fetchTutors,
-  addTutor,
-  deleteTutor,
-} from '../../../redux/tutors/operations';
+import { getTutors, getLoading, getError } from '../../../redux/selectors';
+import { addTutor, deleteTutor } from '../../../redux/operations';
+
+import Cities from 'components/cities';
+// import FacultieContent from 'components/FacultieContent/FacultieContent';
+import Faculties from 'components/FacultieContent/FacultiesEdit';
 
 import styles from './TutorsList.module.css';
-import Cities from 'components/cities';
 
 // import data from '../../../utils/data.json';
 
@@ -44,7 +39,7 @@ const INITIAL_FORM_VALUE = {
   city: '',
 };
 
-function TutorsList(props) {
+function TutorsList() {
   const [searchTherm, setSearchTherm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTherm, 1000);
 
@@ -68,6 +63,8 @@ function TutorsList(props) {
 
   // * with asyncThunk
   const tutorsThunk = useSelector(getTutors);
+  // console.log(tutorsThunk);
+
   const LoadingThunk = useSelector(getLoading);
   const errorThunk = useSelector(getError);
 
@@ -95,10 +92,13 @@ function TutorsList(props) {
   //   fetchData();
   // }, []);
 
-  // * with asyncThunk
-  useEffect(() => {
-    dispatch(fetchTutors());
-  }, [dispatch]);
+  // !   !!! important !!!
+  // * with asyncThunk(moved to App to avoid rerendering)
+  // !   !!! important !!!
+  // useEffect(() => {
+  //   dispatch(fetchTutors());
+  //   console.log(tutorsThunk);
+  // }, [dispatch]);
 
   // ! with toolkit
   // useEffect(() => {
@@ -339,6 +339,8 @@ function TutorsList(props) {
       </Button>
 
       <Cities />
+
+      <Faculties />
     </div>
   );
 }

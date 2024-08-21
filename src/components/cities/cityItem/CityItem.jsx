@@ -1,10 +1,13 @@
-import Paper from 'components/main/Paper';
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Paper from 'components/main/Paper';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
-import styles from './cityItem.module.css';
 import CityMenu from '../CityMenu';
 import useToggle from 'hooks/useToggle';
+
+import styles from './cityItem.module.css';
 
 export default function CityItem({
   children,
@@ -41,3 +44,9 @@ export default function CityItem({
     </>
   );
 }
+
+CityItem.propTypes = {
+  children: PropTypes.string,
+  handleDeleteCity: PropTypes.func,
+  handleEditCity: PropTypes.func,
+};

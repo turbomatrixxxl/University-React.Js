@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Main from './main';
-import data from '../utils/data.json';
+// import data from '../utils/data.json';
+import { useDispatch } from 'react-redux';
+import { fetchFaculties, fetchTutors } from '../redux/operations';
 
 function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    // localStorage.clear();
-    // console.log(data);
-    localStorage.setItem('name', JSON.stringify(data?.name));
-    localStorage.setItem('description', JSON.stringify(data?.description));
-    localStorage.setItem('tutors', JSON.stringify(data?.tutors));
-    localStorage.setItem('cities', JSON.stringify(data?.cities));
-    localStorage.setItem('department', JSON.stringify(data?.department));
-  }, []);
+    dispatch(fetchTutors());
+    dispatch(fetchFaculties());
+  }, [dispatch]);
 
   return (
     <div className="wrapper">
