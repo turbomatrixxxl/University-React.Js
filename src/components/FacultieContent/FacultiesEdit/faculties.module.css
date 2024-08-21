@@ -101,7 +101,7 @@ flex-shrink: 0; */
   justify-content: space-between;
   padding: 19px;
   padding-left: 24px;
-  /* position: relative; */
+  position: relative;
   width: 370px;
 
   /*  regular 16-24-0.5 */
