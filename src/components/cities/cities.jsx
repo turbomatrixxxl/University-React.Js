@@ -51,7 +51,7 @@ export default function Cities() {
   function handleSubmit(ev) {
     ev.preventDefault();
 
-    console.log(newCity);
+    // console.log(newCity);
 
     //* With redux
     dispatch(addCity(newCity));

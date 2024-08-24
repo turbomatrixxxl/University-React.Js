@@ -13,7 +13,7 @@ const citiesSlice = createSlice({
   reducers: {
     addCity: {
       reducer(state, action) {
-        console.log(action.payload);
+        // console.log(action.payload);
 
         state.push(action.payload);
       },
@@ -39,7 +39,7 @@ const citiesSlice = createSlice({
     },
     editCity: {
       reducer(state, action) {
-        console.log(action.payload);
+        // console.log(action.payload);
 
         const index = state.findIndex(city => city.id === action.payload.id.id);
         state.splice(index, 1, action.payload.id);
