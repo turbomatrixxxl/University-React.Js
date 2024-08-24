@@ -1,26 +1,34 @@
 {
   "files": {
-    "main.css": "/University-React.Js/static/css/main.037dce9b.css",
-    "main.js": "/University-React.Js/static/js/main.829a6ea2.js",
+    "main.css": "/University-React.Js/static/css/main.f1362fec.css",
+    "main.js": "/University-React.Js/static/js/main.d0450330.js",
     "static/css/249.040182ad.chunk.css": "/University-React.Js/static/css/249.040182ad.chunk.css",
-    "static/js/249.4b7c84c0.chunk.js": "/University-React.Js/static/js/249.4b7c84c0.chunk.js",
+    "static/js/249.ea793413.chunk.js": "/University-React.Js/static/js/249.ea793413.chunk.js",
     "static/css/117.8139c011.chunk.css": "/University-React.Js/static/css/117.8139c011.chunk.css",
     "static/js/117.5ba602b7.chunk.js": "/University-React.Js/static/js/117.5ba602b7.chunk.js",
     "static/js/391.160f7673.chunk.js": "/University-React.Js/static/js/391.160f7673.chunk.js",
+    "static/css/867.18859122.chunk.css": "/University-React.Js/static/css/867.18859122.chunk.css",
+    "static/js/867.ed6dd6d6.chunk.js": "/University-React.Js/static/js/867.ed6dd6d6.chunk.js",
+    "static/css/270.cdf9e47d.chunk.css": "/University-React.Js/static/css/270.cdf9e47d.chunk.css",
+    "static/js/270.270b8996.chunk.js": "/University-React.Js/static/js/270.270b8996.chunk.js",
     "static/js/342.5117902f.chunk.js": "/University-React.Js/static/js/342.5117902f.chunk.js",
     "static/media/browser-error-404-icon.svg": "/University-React.Js/static/media/browser-error-404-icon.a35d6f1908cf15fbd5a68f279a5f52d8.svg",
     "index.html": "/University-React.Js/index.html",
-    "main.037dce9b.css.map": "/University-React.Js/static/css/main.037dce9b.css.map",
-    "main.829a6ea2.js.map": "/University-React.Js/static/js/main.829a6ea2.js.map",
+    "main.f1362fec.css.map": "/University-React.Js/static/css/main.f1362fec.css.map",
+    "main.d0450330.js.map": "/University-React.Js/static/js/main.d0450330.js.map",
     "249.040182ad.chunk.css.map": "/University-React.Js/static/css/249.040182ad.chunk.css.map",
-    "249.4b7c84c0.chunk.js.map": "/University-React.Js/static/js/249.4b7c84c0.chunk.js.map",
+    "249.ea793413.chunk.js.map": "/University-React.Js/static/js/249.ea793413.chunk.js.map",
     "117.8139c011.chunk.css.map": "/University-React.Js/static/css/117.8139c011.chunk.css.map",
     "117.5ba602b7.chunk.js.map": "/University-React.Js/static/js/117.5ba602b7.chunk.js.map",
     "391.160f7673.chunk.js.map": "/University-React.Js/static/js/391.160f7673.chunk.js.map",
+    "867.18859122.chunk.css.map": "/University-React.Js/static/css/867.18859122.chunk.css.map",
+    "867.ed6dd6d6.chunk.js.map": "/University-React.Js/static/js/867.ed6dd6d6.chunk.js.map",
+    "270.cdf9e47d.chunk.css.map": "/University-React.Js/static/css/270.cdf9e47d.chunk.css.map",
+    "270.270b8996.chunk.js.map": "/University-React.Js/static/js/270.270b8996.chunk.js.map",
     "342.5117902f.chunk.js.map": "/University-React.Js/static/js/342.5117902f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.037dce9b.css",
-    "static/js/main.829a6ea2.js"
+    "static/css/main.f1362fec.css",
+    "static/js/main.d0450330.js"
   ]
 }
