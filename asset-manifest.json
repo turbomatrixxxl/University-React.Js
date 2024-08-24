@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/University-React.Js/static/css/main.98018019.css",
-    "main.js": "/University-React.Js/static/js/main.6638bf81.js",
+    "main.js": "/University-React.Js/static/js/main.8aed4be9.js",
     "static/css/249.83b2317a.chunk.css": "/University-React.Js/static/css/249.83b2317a.chunk.css",
     "static/js/249.089de7da.chunk.js": "/University-React.Js/static/js/249.089de7da.chunk.js",
     "static/css/117.8139c011.chunk.css": "/University-React.Js/static/css/117.8139c011.chunk.css",
-    "static/js/117.9e9c4607.chunk.js": "/University-React.Js/static/js/117.9e9c4607.chunk.js",
+    "static/js/117.1a22bfc1.chunk.js": "/University-React.Js/static/js/117.1a22bfc1.chunk.js",
     "static/js/391.160f7673.chunk.js": "/University-React.Js/static/js/391.160f7673.chunk.js",
     "static/css/867.18859122.chunk.css": "/University-React.Js/static/css/867.18859122.chunk.css",
     "static/js/867.fe607b5f.chunk.js": "/University-React.Js/static/js/867.fe607b5f.chunk.js",
@@ -15,11 +15,11 @@
     "static/media/browser-error-404-icon.svg": "/University-React.Js/static/media/browser-error-404-icon.a35d6f1908cf15fbd5a68f279a5f52d8.svg",
     "index.html": "/University-React.Js/index.html",
     "main.98018019.css.map": "/University-React.Js/static/css/main.98018019.css.map",
-    "main.6638bf81.js.map": "/University-React.Js/static/js/main.6638bf81.js.map",
+    "main.8aed4be9.js.map": "/University-React.Js/static/js/main.8aed4be9.js.map",
     "249.83b2317a.chunk.css.map": "/University-React.Js/static/css/249.83b2317a.chunk.css.map",
     "249.089de7da.chunk.js.map": "/University-React.Js/static/js/249.089de7da.chunk.js.map",
     "117.8139c011.chunk.css.map": "/University-React.Js/static/css/117.8139c011.chunk.css.map",
-    "117.9e9c4607.chunk.js.map": "/University-React.Js/static/js/117.9e9c4607.chunk.js.map",
+    "117.1a22bfc1.chunk.js.map": "/University-React.Js/static/js/117.1a22bfc1.chunk.js.map",
     "391.160f7673.chunk.js.map": "/University-React.Js/static/js/391.160f7673.chunk.js.map",
     "867.18859122.chunk.css.map": "/University-React.Js/static/css/867.18859122.chunk.css.map",
     "867.fe607b5f.chunk.js.map": "/University-React.Js/static/js/867.fe607b5f.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.98018019.css",
-    "static/js/main.6638bf81.js"
+    "static/js/main.8aed4be9.js"
   ]
 }
