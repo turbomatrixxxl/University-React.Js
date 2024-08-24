@@ -53,6 +53,7 @@ export default function FacultiesPage() {
       {facultiesThunk?.map(faculty => {
         return (
           <InfoItemBlock
+            infoName="faculty"
             key={faculty.id}
             id={faculty.id}
             contDeleteRef={contDeleteRef}
