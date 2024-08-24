@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/University-React.Js/static/css/main.22a6eebf.css",
-    "main.js": "/University-React.Js/static/js/main.c5e1a7b3.js",
+    "main.js": "/University-React.Js/static/js/main.0f4c71c7.js",
     "static/css/249.83b2317a.chunk.css": "/University-React.Js/static/css/249.83b2317a.chunk.css",
-    "static/js/249.54d33ed0.chunk.js": "/University-React.Js/static/js/249.54d33ed0.chunk.js",
+    "static/js/249.089de7da.chunk.js": "/University-React.Js/static/js/249.089de7da.chunk.js",
     "static/css/117.8139c011.chunk.css": "/University-React.Js/static/css/117.8139c011.chunk.css",
     "static/js/117.1a22bfc1.chunk.js": "/University-React.Js/static/js/117.1a22bfc1.chunk.js",
     "static/js/391.160f7673.chunk.js": "/University-React.Js/static/js/391.160f7673.chunk.js",
@@ -15,9 +15,9 @@
     "static/media/browser-error-404-icon.svg": "/University-React.Js/static/media/browser-error-404-icon.a35d6f1908cf15fbd5a68f279a5f52d8.svg",
     "index.html": "/University-React.Js/index.html",
     "main.22a6eebf.css.map": "/University-React.Js/static/css/main.22a6eebf.css.map",
-    "main.c5e1a7b3.js.map": "/University-React.Js/static/js/main.c5e1a7b3.js.map",
+    "main.0f4c71c7.js.map": "/University-React.Js/static/js/main.0f4c71c7.js.map",
     "249.83b2317a.chunk.css.map": "/University-React.Js/static/css/249.83b2317a.chunk.css.map",
-    "249.54d33ed0.chunk.js.map": "/University-React.Js/static/js/249.54d33ed0.chunk.js.map",
+    "249.089de7da.chunk.js.map": "/University-React.Js/static/js/249.089de7da.chunk.js.map",
     "117.8139c011.chunk.css.map": "/University-React.Js/static/css/117.8139c011.chunk.css.map",
     "117.1a22bfc1.chunk.js.map": "/University-React.Js/static/js/117.1a22bfc1.chunk.js.map",
     "391.160f7673.chunk.js.map": "/University-React.Js/static/js/391.160f7673.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.22a6eebf.css",
-    "static/js/main.c5e1a7b3.js"
+    "static/js/main.0f4c71c7.js"
   ]
 }
