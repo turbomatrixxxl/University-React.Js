@@ -7,6 +7,8 @@
   /* height: 100vh; */
   position: relative;
   width: 320px;
+  padding-bottom: 48px;
+  /* margin-left: 15px; */
 }
 
 .hide {
@@ -39,9 +41,21 @@
   width: 32px;
 }
 
+.buttonHideMenu {
+  right: -32px;
+}
+
 .button svg {
   width: 16px;
   height: 16px;
+}
+
+.logContainer {
+  margin-top: auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .user {
@@ -51,7 +65,7 @@
   gap: 24px;
   color: var(--common-black, #010101);
   font-family: Montserrat;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 2; /* 200% */

@@ -33,11 +33,19 @@ export const login = createAsyncThunk('auth/login', async (user, thunkApi) => {
   }
 });
 
-export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
-  try {
-    await axios.post('users/logout');
-    setAuthHeader('');
-  } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (data, thunkApi) => {
+    try {
+      axios.defaults.baseURL = 'https://connections-api.goit.global/';
+
+      const response = await axios.post('/users/logout');
+      console.log(response.data);
+      setAuthHeader('');
+
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
-});
+);

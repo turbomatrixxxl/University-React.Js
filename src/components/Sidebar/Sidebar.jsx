@@ -53,7 +53,7 @@ function Sidebar() {
   ];
 
   const menuConfig = isLoggedIn ? menuItemsLoggedIn : menuItemsNotLoggedIn;
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
 
   function SidebarButtonArrowStatus() {
     // console.log(isMenuVisible);
@@ -72,20 +72,20 @@ function Sidebar() {
     <aside className={clsx(styles.sidebar, !isMenuVisible && styles.hide)}>
       <div className={styles.sidebarHeader}></div>
       {/* {Status()} */}
-      <Button customStyles={styles.button} handleClick={handleClick}>
+      <Button
+        customStyles={clsx(
+          styles.button,
+          !isMenuVisible && styles.buttonHideMenu
+        )}
+        handleClick={handleClick}
+      >
         <SidebarButtonArrowStatus />
       </Button>
 
       <Menu items={menuConfig} isVisible={isMenuVisible} />
-      {isLoggedIn && (
+      {isLoggedIn && isMenuVisible && (
         <div
-          style={{
-            marginTop: 'auto',
-            padding: '0 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
-          }}
+          className={clsx(styles.logContainer, !isMenuVisible && styles.hide)}
         >
           <p className={styles.user}>
             <FaUserCircle size="24px" />

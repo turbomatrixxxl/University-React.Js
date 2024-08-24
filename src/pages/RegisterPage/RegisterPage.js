@@ -8,6 +8,7 @@ export default function Register() {
         display: 'flex',
         flexDirection: 'column',
         gap: '36px',
+        paddingLeft: '5px',
       }}
     >
       <h2>Registration</h2>

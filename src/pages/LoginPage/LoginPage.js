@@ -8,6 +8,7 @@ export default function Login() {
         display: 'flex',
         flexDirection: 'column',
         gap: '36px',
+        paddingLeft: '5px',
       }}
     >
       <h2>Login</h2>
