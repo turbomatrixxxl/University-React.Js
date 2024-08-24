@@ -4,7 +4,7 @@
   flex-direction: column;
   flex-shrink: 0;
   gap: 24px;
-  /* height: 100vh; */
+  height: 100vh;
   position: relative;
   width: 320px;
   padding-bottom: 48px;

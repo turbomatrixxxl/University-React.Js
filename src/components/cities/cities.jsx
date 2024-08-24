@@ -44,11 +44,14 @@ export default function Cities() {
       return;
     }
     setNewCity({ [name]: value });
+
     setIsDisabled(false);
   }
 
   function handleSubmit(ev) {
     ev.preventDefault();
+
+    console.log(newCity);
 
     //* With redux
     dispatch(addCity(newCity));
@@ -59,15 +62,6 @@ export default function Cities() {
     toggleForm();
     setNewCity([]);
   }
-
-  // function handleEdit(ev) {
-  //   setEditedCity({
-  //     id: nanoid(),
-  //     name: ev.target.value,
-  //   });
-  //   // console.log(editedCity);
-  //   // console.log(ev.target.value);
-  // }
 
   return (
     <section className={styles.citiesSection}>
