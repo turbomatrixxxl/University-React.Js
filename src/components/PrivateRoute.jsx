@@ -6,7 +6,7 @@ import { useAuth } from 'hooks/useAuth';
 
 export default function PrivateRoute({
   component: Component,
-  redirectTo = 'University-React.Js/',
+  redirectTo = '/',
 }) {
   const { isLoggedIn } = useAuth();
   const shouldRedirect = !isLoggedIn;

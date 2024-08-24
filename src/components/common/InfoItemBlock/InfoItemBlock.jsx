@@ -26,6 +26,7 @@ export default function InfoItemBlock({
   label,
   className,
   divClassName,
+  infoName,
 }) {
   const [isMenuVisible, toggleMenu] = useToggle(false);
 
@@ -115,6 +116,7 @@ export default function InfoItemBlock({
   return (
     <>
       <DeleteModal
+        infoName={infoName}
         isDeleteModalVisible={isDeleteModalVisible}
         handleDeleteModalClose={handleDeleteModalClose}
         dialogDeleteRef={dialogDeleteRef}
@@ -186,4 +188,5 @@ InfoItemBlock.propTypes = {
   label: PropTypes.string,
   className: PropTypes.string,
   divClassName: PropTypes.string,
+  infoName: PropTypes.string,
 };

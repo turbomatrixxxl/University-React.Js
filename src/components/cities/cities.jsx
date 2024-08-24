@@ -110,6 +110,7 @@ export default function Cities() {
                 }}
               /> */}
               <InfoItemBlock
+                infoName="city"
                 id={city.id}
                 contDeleteRef={contDeleteRef}
                 dialogDeleteRef={dialogDeleteRef}

@@ -101,6 +101,7 @@ export default function Faculties() {
           return (
             <li className={styles.citiesListItem} key={faculty.id}>
               <InfoItemBlock
+                infoName="faculty"
                 id={faculty.id}
                 contDeleteRef={contDeleteRef}
                 dialogDeleteRef={dialogDeleteRef}
@@ -115,7 +116,7 @@ export default function Faculties() {
                 divClassName={styles.info}
               >
                 <Link
-                  to={`faculties/${faculty.name}`}
+                  to={`/University-React.Js/faculties/${faculty.name}`}
                   state={{ from: location }}
                 >
                   <p className={styles.name}>{faculty.name}</p>

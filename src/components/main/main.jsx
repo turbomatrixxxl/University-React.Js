@@ -59,7 +59,7 @@ function main() {
             path="University-React.Js/"
             element={
               <PrivateRoute
-                redirectTo="University-React.Js/login"
+                redirectTo="/University-React.Js/login"
                 component={<LazyUniversitiesPage />}
               />
             }
@@ -68,7 +68,7 @@ function main() {
             path="University-React.Js/university"
             element={
               <PrivateRoute
-                redirectTo="University-React.Js/login"
+                redirectTo="/University-React.Js/login"
                 component={<LazyUniversitiesPage />}
               />
             }
@@ -77,7 +77,7 @@ function main() {
             path="University-React.Js/faculties"
             element={
               <PrivateRoute
-                redirectTo="University-React.Js/login"
+                redirectTo="/University-React.Js/login"
                 component={<LazyFacultiesPage />}
               />
             }
@@ -86,7 +86,7 @@ function main() {
             path="University-React.Js/faculties/:facultyName"
             element={
               <PrivateRoute
-                redirectTo="University-React.Js/login"
+                redirectTo="/University-React.Js/login"
                 component={<LazyFacultieContent />}
               />
             }
