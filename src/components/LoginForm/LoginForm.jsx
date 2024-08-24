@@ -31,13 +31,13 @@ export default function LoginForm() {
         label="Enter email address"
         name="email"
         type="email"
-        required="required"
+        required={true}
       />
       <Input
         label="Enter password"
         name="password"
         type="password"
-        required="required"
+        required={true}
       />
       <Button type="submit">Log In</Button>
     </form>

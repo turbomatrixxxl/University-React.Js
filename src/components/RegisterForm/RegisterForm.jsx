@@ -27,23 +27,18 @@ export default function RegisterForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <Input
-        label="Enter User name"
-        name="name"
-        type="text"
-        required="required"
-      />
+      <Input label="Enter User name" name="name" type="text" required={true} />
       <Input
         label="Enter email address"
         name="email"
         type="email"
-        required="required"
+        required={true}
       />
       <Input
         label="Enter password"
         name="password"
         type="password"
-        required="required"
+        required={true}
       />
       <Button type="submit">Register</Button>
     </form>
