@@ -28,7 +28,7 @@ Input.propTypes = {
   type: PropTypes.string,
   value: PropTypes.string,
   handleChange: PropTypes.func,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 export default Input;

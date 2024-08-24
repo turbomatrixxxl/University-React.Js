@@ -1,5 +1,5 @@
 import Button from 'components/common/Button';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { HiPlus } from 'react-icons/hi';
 import citiesIcon from '../../images/citiesIcon.png';
 import useToggle from 'hooks/useToggle';
@@ -31,6 +31,10 @@ export default function Cities() {
   const contRef = useRef();
   const dialogDeleteRef = useRef();
   const contDeleteRef = useRef();
+
+  useEffect(() => {
+    localStorage.setItem('cities', JSON.stringify(allCities));
+  }, [allCities]);
 
   function handleAddButtonChange(ev) {
     const { name, value } = ev.target;
@@ -74,7 +78,7 @@ export default function Cities() {
         <h1 className={styles.citiesTitle}>cities</h1>
       </div>
       <ul className={styles.citiesContainer}>
-        {allCities.map(city => {
+        {allCities?.map(city => {
           return (
             <li className={styles.citiesListItem} key={city.id}>
               {/* <DeleteModal

@@ -43,3 +43,50 @@
   width: 16px;
   height: 16px;
 }
+
+.user {
+  align-items: center;
+  display: flex;
+
+  gap: 24px;
+  color: var(--common-black, #010101);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2; /* 200% */
+  letter-spacing: 0.4px;
+}
+
+.user:hover {
+  color: #ff6b0a;
+}
+
+.user svg {
+  fill: #ff6b0a;
+  width: 24px;
+  height: 24px;
+}
+
+.logoutButton {
+  align-items: center;
+  background-color: #ff6b0a;
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 24px;
+  justify-content: center;
+  padding: 5px 10px;
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2; /* 200% */
+  letter-spacing: 0.4px;
+  text-align: center;
+  text-transform: uppercase;
+}

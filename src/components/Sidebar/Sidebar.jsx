@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   HiAcademicCap,
@@ -12,8 +12,15 @@ import Menu from './Menu/Menu';
 // import { Component } from 'react';
 import clsx from 'clsx';
 
-import styles from './Sidebar.module.css';
 import useToggle from 'hooks/useToggle';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+
+import { FaUserCircle } from 'react-icons/fa';
+import { BiSolidLogOut } from 'react-icons/bi';
+
+import styles from './Sidebar.module.css';
+import { logout } from '../../redux/auth/operations';
 
 function Sidebar() {
   // const [isMenuVisible, setIsMenuVisible] = useState(true);
@@ -21,7 +28,11 @@ function Sidebar() {
   const [isMenuVisible, handleClick] = useToggle(true);
   // console.log(isMenuVisible);
 
-  const menuItems = [
+  const { isLoggedIn, user } = useAuth();
+
+  const dispatch = useDispatch();
+
+  const menuItemsLoggedIn = [
     {
       name: 'University',
       icon: <HiBookOpen />,
@@ -32,38 +43,17 @@ function Sidebar() {
     },
   ];
 
-  useEffect(() => {
-    setTimeout(() => console.log('Am inceput numaratoarea', 5000), 5000);
+  const menuItemsNotLoggedIn = [
+    {
+      name: 'Login',
+    },
+    {
+      name: 'Register',
+    },
+  ];
 
-    return () => {
-      clearTimeout();
-      console.log('Am oprit numaratoarea');
-    };
-  }, []);
-
-  // function handleClick() {
-  //   // console.log(isMenuVisible);
-
-  //   setIsMenuVisible(!isMenuVisible);
-  // }
-
-  // function Status() {
-  //   if (isMenuVisible) {
-  //     // console.log('hi');
-  //     return (
-  //       <Button customStyles={styles.button} handleClick={handleClick}>
-  //         <HiChevronLeft />
-  //       </Button>
-  //     );
-  //   } else {
-  //     // console.log('bye');
-  //     return (
-  //       <Button customStyles={styles.button} handleClick={handleClick}>
-  //         <HiChevronRight />
-  //       </Button>
-  //     );
-  //   }
-  // }
+  const menuConfig = isLoggedIn ? menuItemsLoggedIn : menuItemsNotLoggedIn;
+  console.log(isLoggedIn);
 
   function SidebarButtonArrowStatus() {
     // console.log(isMenuVisible);
@@ -74,6 +64,10 @@ function Sidebar() {
     }
   }
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <aside className={clsx(styles.sidebar, !isMenuVisible && styles.hide)}>
       <div className={styles.sidebarHeader}></div>
@@ -82,7 +76,33 @@ function Sidebar() {
         <SidebarButtonArrowStatus />
       </Button>
 
-      <Menu items={menuItems} isVisible={isMenuVisible} />
+      <Menu items={menuConfig} isVisible={isMenuVisible} />
+      {isLoggedIn && (
+        <div
+          style={{
+            marginTop: 'auto',
+            padding: '0 24px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '24px',
+          }}
+        >
+          <p className={styles.user}>
+            <FaUserCircle size="24px" />
+            {user.name}
+          </p>
+
+          <div className={styles.user}>
+            <BiSolidLogOut size="24px" />
+            <Button
+              customStyles={styles.logoutButton}
+              handleClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </div>
+        </div>
+      )}
     </aside>
   );
 }

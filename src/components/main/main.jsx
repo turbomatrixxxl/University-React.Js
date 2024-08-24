@@ -5,9 +5,12 @@ import { Route, Routes } from 'react-router-dom';
 import FacultyDescription from 'components/FacultieContent/FacultyDescription';
 import FacultyHistory from 'components/FacultieContent/FacultyHistory';
 // import FacultiesPage from 'pages/FacultiesPage/FacultiesPage';
-import LoadingPage from 'pages/LoadingPage';
+
 // import UniversitiesPage from 'pages/UniversitiesPage/UniversitiesPage';
 import NotFoundPage from 'pages/NotFoundPage';
+import LoadingPage from 'pages/LoadingPage';
+import RestrictedRoute from 'components/RestrictedRoute';
+import PrivateRoute from 'components/PrivateRoute';
 
 const LazyUniversitiesPage = lazy(() =>
   import('pages/UniversitiesPage/UniversitiesPage')
@@ -18,6 +21,13 @@ const LazyFacultiesPage = lazy(() =>
 const LazyFacultieContent = lazy(() =>
   import('components/FacultieContent/FacultieContent')
 );
+
+const LazyLoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+
+const LazyRegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage')
+);
+
 // import Paper from './Paper';
 
 // import data from '../../utils/data.json';
@@ -28,20 +38,58 @@ function main() {
       <Suspense fallback={<LoadingPage />}>
         <Routes>
           <Route
+            path="University-React.Js/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/University-React.Js/university"
+                component={<LazyLoginPage />}
+              />
+            }
+          />
+          <Route
+            path="University-React.Js/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/University-React.Js/university"
+                component={<LazyRegisterPage />}
+              />
+            }
+          />
+          <Route
             path="University-React.Js/"
-            element={<LazyUniversitiesPage />}
+            element={
+              <PrivateRoute
+                redirectTo="University-React.Js/login"
+                component={<LazyUniversitiesPage />}
+              />
+            }
           />
           <Route
             path="University-React.Js/university"
-            element={<LazyUniversitiesPage />}
+            element={
+              <PrivateRoute
+                redirectTo="University-React.Js/login"
+                component={<LazyUniversitiesPage />}
+              />
+            }
           />
           <Route
             path="University-React.Js/faculties"
-            element={<LazyFacultiesPage />}
+            element={
+              <PrivateRoute
+                redirectTo="University-React.Js/login"
+                component={<LazyFacultiesPage />}
+              />
+            }
           />
           <Route
             path="University-React.Js/faculties/:facultyName"
-            element={<LazyFacultieContent />}
+            element={
+              <PrivateRoute
+                redirectTo="University-React.Js/login"
+                component={<LazyFacultieContent />}
+              />
+            }
           >
             <Route path="" element={<FacultyDescription />} />
             <Route path="description" element={<FacultyDescription />} />
@@ -50,7 +98,7 @@ function main() {
 
           <Route
             path="*"
-            element={<NotFoundPage initPage="University-React.Js" />}
+            element={<NotFoundPage initPage="University-React.Js/university" />}
           />
         </Routes>
       </Suspense>

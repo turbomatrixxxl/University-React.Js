@@ -1,6 +1,7 @@
 // import { combineReducers, createStore } from 'redux';
 // import { devToolsEnhancer } from '@redux-devtools/extension';
 // import { tutorsReducer } from './tutors/reducers';
+import { authReducer } from './auth/authSlice';
 import { citiesReducer } from './citiesSlice';
 import { facultiesReducer } from './facultiesSlice';
 import { tutorsReducer } from './tutorsSlice';
@@ -21,5 +22,6 @@ export const store = configureStore({
     tutorsSlice: tutorsReducer,
     citiesSlice: citiesReducer,
     facultiesSlice: facultiesReducer,
+    authSlice: authReducer,
   },
 });
