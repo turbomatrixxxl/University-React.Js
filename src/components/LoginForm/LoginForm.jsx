@@ -34,6 +34,7 @@ export default function LoginForm() {
         required={true}
       />
       <Input
+        autoComplete="on"
         label="Enter password"
         name="password"
         type="password"
